@@ -1,0 +1,156 @@
+/* ============================================================
+   techstack.css
+   Styles for TechStack.jsx — bio card + skill category cards
+   ============================================================ */
+
+/* ── Bio card ── */
+.ts-bio-card {
+  margin-bottom: 14px;
+}
+.ts-bio-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+.ts-bio-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--accent-border);
+}
+.ts-bio-text {
+  flex: 1;
+  min-width: 0;
+}
+.ts-bio-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+.ts-bio-role {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.ts-bio-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.ts-bio-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ── Skill category grid ──
+   2 columns on desktop, 1 on mobile */
+.ts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (max-width: 600px) {
+  .ts-grid { grid-template-columns: 1fr; }
+  .ts-bio-inner { flex-direction: column; align-items: center; text-align: center; }
+  .ts-bio-location { justify-content: center; }
+}
+
+/* ── Category card ── */
+.ts-category-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Category header: icon + label */
+.ts-category-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.ts-category-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  flex-shrink: 0;
+}
+.ts-category-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ── Skill chips grid ── */
+.ts-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+/* Single skill chip: icon + name */
+.ts-skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 100px;
+  border: var(--border-dim);
+  background: var(--surface-2);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: border-color var(--transition), background var(--transition),
+    color var(--transition), transform 0.15s ease;
+  cursor: default;
+}
+.ts-skill-chip:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-dim);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+.ts-skill-icon {
+  display: flex;
+  align-items: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── Dark mode overrides ── */
+[data-theme="dark"] .ts-bio-avatar {
+  border-color: rgba(255, 226, 52, 0.3);
+  box-shadow: 0 0 12px rgba(255, 226, 52, 0.1);
+}
+[data-theme="dark"] .ts-skill-chip {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 226, 52, 0.1);
+  color: var(--text-secondary);
+}
+[data-theme="dark"] .ts-skill-chip:hover {
+  background: rgba(255, 226, 52, 0.08);
+  border-color: rgba(255, 226, 52, 0.3);
+  color: var(--text-primary);
+}
+[data-theme="dark"] .ts-category-icon {
+  background: rgba(255, 226, 52, 0.08);
+  border-color: rgba(255, 226, 52, 0.2);
+  color: var(--accent);
+}
