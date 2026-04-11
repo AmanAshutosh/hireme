@@ -76,7 +76,7 @@ import PageTransition from "../components/PageTransition";
 import BackButton from "../components/BackButton";
 import { personal, skills, skillGroupLabels } from "../data/portfolioData";
 import "../styling/pages.css";
-import "../styling/techstack.css";
+import "../styling/Techstack.css";
 
 // ── Brand icon map ─────────────────────────────────────────
 // Key  = exact string from portfolioData skills arrays
