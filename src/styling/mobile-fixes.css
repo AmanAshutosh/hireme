@@ -1,0 +1,491 @@
+/* ============================================================
+   mobile-fixes.css
+   Drop this AFTER global.css, home.css, and pages.css.
+   Fixes:
+   1. Navbar overflow on mobile
+   2. Hero section compressed layout on mobile
+   3. About section skill icons misalignment
+   4. Achievements cards side-by-side on mobile → stack
+   5. Page transition opens from center → from top
+   6. Laggy animations → GPU-accelerated, smooth
+   ============================================================ */
+
+/* ─────────────────────────────────────────
+   GLOBAL ANIMATION PERFORMANCE
+   Use will-change + GPU-composited props only
+   (opacity + transform). Avoid animating
+   layout properties like height, padding, etc.
+   ───────────────────────────────────────── */
+
+/* Force GPU compositing on all animated elements */
+.bento-card,
+.inner-card,
+.project-card,
+.ach-cert-card-link,
+.edu-card-item,
+.social-page-card,
+.ts-skill-chip,
+.back-btn,
+.hero-btn,
+.nav-link,
+.theme-toggle {
+  will-change: transform, opacity;
+  transform: translateZ(0); /* promote to own compositing layer */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-avatar-ring {
+    animation: none !important;
+  }
+  .status-pulse {
+    animation: none !important;
+  }
+}
+
+/* Optimise the ring spin — transform-origin prevents layout thrash */
+.hero-avatar-ring {
+  animation: spin 16s linear infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Optimise pulse — use transform scale instead of box-shadow growth
+   for better compositing (box-shadow forces repaint) */
+.status-pulse {
+  animation: pulse-opt 2.4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+@keyframes pulse-opt {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.6); opacity: 0.4; }
+}
+
+/* ─────────────────────────────────────────
+   FIX 5 — PAGE TRANSITION (open from top)
+   AnimatePresence exit/enter origin fix.
+   The issue is scale(0.99) origins at center.
+   Set transform-origin: top center so the
+   card "grows" from the top, not the middle.
+   ───────────────────────────────────────── */
+/* PageTransition wraps everything in a motion.div */
+[data-framer-component-type],
+.page-transition-wrapper {
+  transform-origin: top center !important;
+}
+
+/* Target the first motion.div child of body wrapper */
+body > #root > * > div[style*="opacity"] {
+  transform-origin: top center;
+}
+
+/* ─────────────────────────────────────────
+   FIX 1 — NAVBAR MOBILE OVERFLOW
+   ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .home-nav {
+    /* Allow wrapping instead of overflowing */
+    flex-wrap: wrap;
+    gap: 8px;
+    border-radius: 16px;
+    padding: 10px 12px;
+    /* Prevent content escaping the container */
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .nav-logo {
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    /* Allow nav links to wrap on very small screens */
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: flex-end;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .nav-link {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+    /* Prevent individual links from overflowing */
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-nav {
+    /* On very small screens, stack logo and links */
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    padding: 10px 14px;
+  }
+
+  .nav-logo {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    justify-content: center;
+    width: 100%;
+    gap: 4px;
+  }
+
+  .nav-link {
+    padding: 6px 12px;
+    font-size: 0.72rem;
+  }
+}
+
+/* ─────────────────────────────────────────
+   FIX 2 — HERO SECTION MOBILE SPACING
+   ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .card-hero {
+    min-height: unset !important;
+    padding: 28px 20px;
+  }
+
+  .hero-inner {
+    /* Switch from space-evenly to a controlled gap approach */
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 4px 0;
+    height: auto;
+  }
+
+  .hero-avatar-wrap {
+    width: 86px;
+    height: 86px;
+  }
+  .hero-avatar {
+    width: 86px;
+    height: 86px;
+  }
+
+  .hero-name {
+    font-size: 1.75rem;
+  }
+
+  .hero-role {
+    font-size: 0.8rem;
+    margin-top: 2px;
+  }
+
+  .hero-text-block {
+    gap: 4px;
+  }
+
+  .hero-tagline {
+    font-size: 0.82rem;
+    max-width: 100%;
+    line-height: 1.6;
+  }
+
+  .hero-btns {
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-btn {
+    padding: 10px 20px;
+    font-size: 0.78rem;
+    /* Make buttons full-width on small screens if they wrap */
+  }
+
+  .hero-location {
+    margin-top: 0;
+    font-size: 0.71rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-inner {
+    gap: 18px;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-btn {
+    justify-content: center;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.8rem;
+  }
+
+  .hero-name {
+    font-size: 1.6rem;
+  }
+}
+
+/* ─────────────────────────────────────────
+   FIX 3 — ABOUT SECTION SKILL ICONS
+   Misaligned icons + tight spacing
+   ───────────────────────────────────────── */
+
+/* Ensure skill group labels align icons + text perfectly */
+.skills-group-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  margin-top: 18px;
+  line-height: 1;
+}
+
+/* First group shouldn't have top margin */
+.skills-group:first-child .skills-group-label {
+  margin-top: 0;
+}
+
+/* Icon inside label — force consistent sizing and vertical alignment */
+.skills-group-label svg,
+.skills-group-label > span {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.skills-group {
+  padding-bottom: 4px;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+/* Tags — consistent height so they align on the same baseline */
+.tag {
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .skills-group-label {
+    gap: 5px;
+    font-size: 0.68rem;
+    margin-top: 16px;
+  }
+
+  .skills-tags {
+    gap: 5px;
+  }
+
+  /* About intro card avatar section — prevent cramping */
+  .about-avatar-section {
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .about-big-name {
+    font-size: 1.2rem;
+  }
+
+  .about-big-role {
+    font-size: 0.78rem;
+  }
+}
+
+/* ─────────────────────────────────────────
+   FIX 4 — ACHIEVEMENTS CARDS MOBILE STACK
+   The 2-column grid breaks on small screens.
+   ───────────────────────────────────────── */
+
+/* The highlights grid in Achievements.jsx is an inline style.
+   We override it via the inner-card children inside the grid wrapper */
+@media (max-width: 600px) {
+  /* Target the achievements highlights grid */
+  .inner-page > div[style*="grid-template-columns: repeat(2"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  /* Also target via a class we'll add (see Achievements.jsx fix below) */
+  .ach-highlights-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ─────────────────────────────────────────
+   IMPROVED CARD HOVER — no layout thrash
+   Only use transform + opacity, never margin/
+   padding/top/left which trigger reflow
+   ───────────────────────────────────────── */
+.bento-card {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bento-card:hover {
+  transform: translateY(-2px) translateZ(0);
+}
+
+.project-card {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.project-card:hover {
+  transform: translateY(-3px) translateZ(0);
+}
+
+.ach-cert-card-link {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ach-cert-card-link:not(.ach-cert-no-link):hover {
+  transform: translateY(-2px) translateZ(0);
+}
+
+.ts-skill-chip {
+  transition: border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ts-skill-chip:hover {
+  transform: translateY(-1px) translateZ(0);
+}
+
+.back-btn {
+  transition: background 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.back-btn:hover {
+  transform: scale(1.05) translateZ(0);
+}
+
+.theme-toggle {
+  transition: background 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.theme-toggle:hover {
+  transform: translateY(-2px) translateZ(0);
+}
+
+/* ─────────────────────────────────────────
+   ADDITIONAL MOBILE POLISH
+   ───────────────────────────────────────── */
+
+/* Prevent any horizontal scroll globally */
+body, html {
+  overflow-x: hidden;
+}
+
+/* Wrapper padding reduction on tiny screens */
+@media (max-width: 480px) {
+  .home-wrapper {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .inner-page {
+    padding: 16px 12px 40px;
+  }
+
+  .inner-header {
+    margin-bottom: 20px;
+  }
+
+  .bento-card {
+    padding: 18px;
+  }
+
+  .inner-card {
+    padding: 18px;
+  }
+}
+
+/* Social page grid — 1 col on mobile */
+@media (max-width: 600px) {
+  .social-page-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Freelance services — 1 col on very small screens */
+@media (max-width: 400px) {
+  .freelance-services-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* TechStack bio card — stack on mobile */
+@media (max-width: 480px) {
+  .ts-bio-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .ts-bio-location {
+    justify-content: center;
+  }
+  .ts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Experience timeline — ensure no overflow */
+@media (max-width: 600px) {
+  .exp-item {
+    grid-template-columns: 20px 1fr;
+  }
+  .exp-content {
+    padding-left: 12px;
+    min-width: 0;
+  }
+  .exp-stack {
+    gap: 4px;
+  }
+}
+
+/* Contact grid single column on mobile */
+@media (max-width: 640px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Projects — single col on mobile */
+@media (max-width: 640px) {
+  .projects-bento {
+    grid-template-columns: 1fr;
+  }
+}

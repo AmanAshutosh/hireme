@@ -1,31 +1,31 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-// 🔹 Ye animation ke different states define karta hai
-// 🔹 Jab page load hota hai, animate hota hai, ya exit hota hai
 const variants = {
-  // 🔹 Initial state (jab component mount hota hai)
-  initial: { opacity: 0, y: 18, scale: 0.99 },
-
-  // 🔹 Final visible state (normal state)
-  animate: { opacity: 1, y: 0, scale: 1 },
-
-  // 🔹 Exit state (jab component unmount ho raha ho / page change ho raha ho)
-  exit: { opacity: 0, y: -10, scale: 0.99 },
+  initial: { opacity: 0, y: 0 }, // appear at top of page, just invisible
+  animate: { opacity: 1, y: 0 }, // fade in in place — no vertical drift
+  exit: { opacity: 0, y: 0 }, // fade out in place
 };
 
-// 🔹 Ye wrapper component hai jo har page ko smooth animation deta hai
-// 🔹 children = jo bhi page content hai (Home, About, etc.)
 export default function PageTransition({ children }) {
+  const { pathname } = useLocation();
+
+  // Instantly jump to top of page on every route change,
+  // BEFORE the new page animates in — so it always opens from the top.
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
+
   return (
     <motion.div
-      variants={variants} // 🔹 upar defined animation states use ho rahe hain
-      initial="initial" // 🔹 start kaha se kare animation
-      animate="animate" // 🔹 final visible state
-      exit="exit" // 🔹 jab page exit kare
-      // 🔹 animation ki speed aur easing control karta hai
-      transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+      variants={variants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+      style={{ willChange: "opacity" }}
     >
-      {/* 🔹 yaha actual page ka content render hota hai */}
       {children}
     </motion.div>
   );

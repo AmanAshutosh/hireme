@@ -18,6 +18,8 @@ import Social from "./pages/Social";
 import TechStack from "./pages/TechStack";
 import "./styling/global.css";
 import ThemeToggle from "./components/ThemeToggle";
+// ✅ Import LAST so mobile fixes override existing styles
+import "./styling/mobile-fixes.css";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -40,15 +42,12 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  // ✅ 1. THEME STATE
   const [theme, setTheme] = useState("light");
 
-  // ✅ 2. TOGGLE FUNCTION
   const toggle = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
-  // ✅ 3. APPLY THEME TO HTML
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
@@ -56,10 +55,7 @@ export default function App() {
   return (
     <Router>
       <div className="grain" />
-
-      {/* ✅ 4. ADD TOGGLE HERE (TOP LEVEL) */}
       <ThemeToggle theme={theme} toggle={toggle} />
-
       <AnimatedRoutes />
     </Router>
   );

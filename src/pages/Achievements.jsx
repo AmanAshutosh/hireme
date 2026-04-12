@@ -5,12 +5,17 @@ import BackButton from "../components/BackButton";
 import { certifications } from "../data/portfolioData";
 import "../styling/pages.css";
 
+// Optimised: shorter duration + GPU-only props (opacity + transform)
 const fadeUp = {
-  initial: { opacity: 0, y: 16 },
+  initial: { opacity: 0, y: 14, willChange: "opacity, transform" },
   animate: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.38, delay: i * 0.08, ease: [0.4, 0, 0.2, 1] },
+    transition: {
+      duration: 0.32,
+      delay: i * 0.07,
+      ease: [0.4, 0, 0.2, 1],
+    },
   }),
 };
 
@@ -46,8 +51,9 @@ export default function Achievements() {
           <h1 className="inner-title">Achievements</h1>
         </div>
 
-        {/* Highlights bento */}
+        {/* FIX: Added ach-highlights-grid class so mobile-fixes.css can target it */}
         <div
+          className="ach-highlights-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
