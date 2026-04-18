@@ -14,20 +14,20 @@ export const personal = {
 };
 
 export const socials = [
-  { name: "GitHub", url: "https://github.com/ashutoshhify", icon: "github" },
+  { name: "GitHub", url: "https://github.com/AmanAshutosh", icon: "github" },
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/ashutoshhify",
+    url: "https://www.linkedin.com/in/ashutoshhify/",
     icon: "linkedin",
   },
-  { name: "X (Twitter)", url: "https://x.com/ashutoshhify", icon: "twitter" },
-  { name: "LeetCode", url: "https://leetcode.com/ashutoshhify", icon: "code" },
+  { name: "X (Twitter)", url: "https://x.com/CodeKarm", icon: "twitter" },
+  { name: "LeetCode", url: "https://leetcode.com/u/CodeKarm/", icon: "code" },
   {
     name: "GeeksforGeeks",
-    url: "https://auth.geeksforgeeks.org/user/ashutoshhify",
+    url: "https://www.geeksforgeeks.org/profile/codelessness",
     icon: "gfg",
   },
-  { name: "Medium", url: "https://medium.com/@ashutoshaman", icon: "medium" },
+  { name: "Medium", url: "https://medium.com/@Codelessness", icon: "medium" },
 ];
 
 export const skills = {
