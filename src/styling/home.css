@@ -11,13 +11,49 @@
    #11 nav better styling
 ═══════════════════════════════════════ */
 
+/* ── ANIMATED BACKGROUND ── */
+@property --grad-x1 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --grad-y1 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --grad-x2 { syntax: '<percentage>'; inherits: false; initial-value: 100%; }
+@property --grad-y2 { syntax: '<percentage>'; inherits: false; initial-value: 100%; }
+@property --grad-x3 { syntax: '<percentage>'; inherits: false; initial-value: 50%; }
+@property --grad-y3 { syntax: '<percentage>'; inherits: false; initial-value: 60%; }
+
+@keyframes bg-wander {
+  0%, 100% {
+    --grad-x1: 0%;   --grad-y1: 0%;
+    --grad-x2: 100%; --grad-y2: 100%;
+    --grad-x3: 50%;  --grad-y3: 60%;
+  }
+  25% {
+    --grad-x1: 30%;  --grad-y1: 65%;
+    --grad-x2: 70%;  --grad-y2: 25%;
+    --grad-x3: 20%;  --grad-y3: 85%;
+  }
+  50% {
+    --grad-x1: 80%;  --grad-y1: 15%;
+    --grad-x2: 8%;   --grad-y2: 78%;
+    --grad-x3: 82%;  --grad-y3: 28%;
+  }
+  75% {
+    --grad-x1: 45%;  --grad-y1: 85%;
+    --grad-x2: 58%;  --grad-y2: 8%;
+    --grad-x3: 25%;  --grad-y3: 45%;
+  }
+}
+
 .home-wrapper {
   min-height: 100vh;
   padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle 650px at var(--grad-x1) var(--grad-y1), rgba(184, 146, 90, 0.14), transparent),
+    radial-gradient(circle 520px at var(--grad-x2) var(--grad-y2), rgba(34, 197, 94, 0.07), transparent),
+    radial-gradient(circle 460px at var(--grad-x3) var(--grad-y3), rgba(220, 140, 180, 0.09), transparent);
+  animation: bg-wander 28s ease-in-out infinite;
 }
 
 /* ── NAV  Fix #11 ── */
@@ -29,9 +65,12 @@
   margin: 0 auto;
   width: 100%;
   padding: 6px 8px 6px 12px;
-  background: var(--surface);
-  border: var(--border);
+  background: var(--bg);
+  border: none;
   border-radius: 100px;
+  box-shadow: var(--neumo-shadow);
+  position: relative;
+  z-index: 2;
 }
 
 .nav-logo {
@@ -75,10 +114,12 @@
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 12px;
+  gap: 16px;
   width: 100%;
   max-width: 1360px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 /* ── BASE CARD ── */
@@ -90,52 +131,55 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  transition: transform var(--transition);
+  box-shadow: var(--neumo-shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 .bento-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: var(--neumo-shadow-hover);
+}
+.bento-card:active {
+  transform: translateY(0);
+  box-shadow: var(--neumo-shadow-inset);
 }
 
 /* ── CARD VARIANTS ── */
 .card-light {
-  background: var(--surface);
-  border: var(--border);
+  background: var(--bg);
+  border: none;
   color: var(--text-primary);
 }
 .card-dark {
-  background: var(--surface);
-  border: var(--border);
+  background: var(--bg);
+  border: none;
   color: var(--text-primary);
 }
 .card-darker {
-  background: var(--surface-2);
-  border: var(--border);
+  background: var(--bg);
+  border: none;
   color: var(--text-primary);
 }
 .card-pink {
-  background: var(--surface-pink);
-  border: 1px solid rgba(220, 140, 180, 0.2);
+  background: linear-gradient(135deg, var(--bg) 55%, rgba(220, 140, 180, 0.1) 100%);
+  border: none;
   color: var(--text-primary);
 }
 
-/* Fix #1 – Projects: NOT black, use warm off-white with accent border */
 .card-projects-light {
-  background: var(--surface-warm);
-  border: var(--border);
+  background: var(--bg);
+  border: none;
   color: var(--text-primary);
 }
 
-/* Fix #2 – Connect: warm light surface */
 .card-connect-light {
-  background: var(--surface-2);
-  border: var(--border);
+  background: var(--bg);
+  border: none;
   color: var(--text-primary);
 }
 
-/* Fix #7 – Status/Open to Work: light, NOT dark */
 .card-status-light {
-  background: var(--surface);
-  border: var(--border);
+  background: var(--bg);
+  border: none;
   color: var(--text-primary);
 }
 
@@ -734,11 +778,15 @@
    DARK MODE OVERRIDES — home.css
    ═══════════════════════════════════════════ */
 [data-theme="dark"] .home-wrapper {
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle 650px at var(--grad-x1) var(--grad-y1), rgba(255, 226, 52, 0.1), transparent),
+    radial-gradient(circle 520px at var(--grad-x2) var(--grad-y2), rgba(0, 255, 136, 0.06), transparent),
+    radial-gradient(circle 460px at var(--grad-x3) var(--grad-y3), rgba(124, 92, 252, 0.09), transparent);
 }
 [data-theme="dark"] .home-nav {
-  background: rgba(6, 12, 31, 0.85);
-  border-bottom-color: rgba(255, 226, 52, 0.08);
+  background: var(--bg);
+  box-shadow: var(--neumo-shadow);
 }
 [data-theme="dark"] .nav-link {
   color: var(--text-secondary);
@@ -755,30 +803,24 @@
 
 /* bento card base */
 [data-theme="dark"] .bento-card {
-  border-color: rgba(255, 226, 52, 0.1);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--neumo-shadow);
 }
 [data-theme="dark"] .bento-card:hover {
-  box-shadow: 0 8px 32px rgba(255, 226, 52, 0.1);
-  border-color: rgba(255, 226, 52, 0.22);
+  box-shadow: var(--neumo-shadow-hover);
 }
-[data-theme="dark"] .card-light {
-  background: var(--surface);
+[data-theme="dark"] .bento-card:active {
+  box-shadow: var(--neumo-shadow-inset);
 }
-[data-theme="dark"] .card-darker {
-  background: var(--surface-2);
+[data-theme="dark"] .card-light,
+[data-theme="dark"] .card-dark,
+[data-theme="dark"] .card-darker,
+[data-theme="dark"] .card-projects-light,
+[data-theme="dark"] .card-connect-light,
+[data-theme="dark"] .card-status-light {
+  background: var(--bg);
 }
 [data-theme="dark"] .card-pink {
-  background: var(--surface-pink);
-}
-[data-theme="dark"] .card-projects-light {
-  background: var(--surface-warm);
-}
-[data-theme="dark"] .card-connect-light {
-  background: var(--surface-2);
-}
-[data-theme="dark"] .card-status-light {
-  background: var(--surface);
+  background: linear-gradient(135deg, var(--bg) 55%, rgba(124, 92, 252, 0.1) 100%);
 }
 
 /* card-arrow */

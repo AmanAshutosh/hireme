@@ -31,6 +31,14 @@
   --font-display: "Syne", sans-serif;
   --font-body: "DM Sans", sans-serif;
   --transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── NEUMORPHISM ── */
+  --neumo-shadow-dark: #c8c7c3;
+  --neumo-shadow-light: #ffffff;
+  --neumo-shadow: 6px 6px 18px var(--neumo-shadow-dark), -6px -6px 18px var(--neumo-shadow-light);
+  --neumo-shadow-hover: 12px 12px 32px var(--neumo-shadow-dark), -12px -12px 32px var(--neumo-shadow-light);
+  --neumo-shadow-sm: 3px 3px 8px var(--neumo-shadow-dark), -3px -3px 8px var(--neumo-shadow-light);
+  --neumo-shadow-inset: inset 4px 4px 12px var(--neumo-shadow-dark), inset -4px -4px 12px var(--neumo-shadow-light);
 }
 
 *,
@@ -159,6 +167,10 @@ img {
   --accent-border: rgba(255, 226, 52, 0.3);
   --yellow: #ffe066;
   --green-ok: #00ff88;
+
+  /* Neumorphism dark */
+  --neumo-shadow-dark: #020408;
+  --neumo-shadow-light: #0d1838;
 
   --border: 1px solid rgba(255, 226, 52, 0.14);
   --border-dim: 1px solid rgba(255, 226, 52, 0.07);
