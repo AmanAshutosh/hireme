@@ -154,7 +154,7 @@ img {
   --text-dark-secondary: #7a98d0;
   --text-light: #dce8ff;
 
-  --accent: #FFE234;
+  --accent: #ffe234;
   --accent-dim: rgba(255, 226, 52, 0.1);
   --accent-border: rgba(255, 226, 52, 0.3);
   --yellow: #ffe066;
@@ -206,8 +206,11 @@ img {
   letter-spacing: 0.04em;
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: background var(--transition), color var(--transition),
-    border-color var(--transition), box-shadow var(--transition),
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
     transform 0.15s ease;
 }
 .theme-toggle:hover {

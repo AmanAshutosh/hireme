@@ -762,12 +762,24 @@
   box-shadow: 0 8px 32px rgba(255, 226, 52, 0.1);
   border-color: rgba(255, 226, 52, 0.22);
 }
-[data-theme="dark"] .card-light  { background: var(--surface); }
-[data-theme="dark"] .card-darker { background: var(--surface-2); }
-[data-theme="dark"] .card-pink   { background: var(--surface-pink); }
-[data-theme="dark"] .card-projects-light { background: var(--surface-warm); }
-[data-theme="dark"] .card-connect-light  { background: var(--surface-2); }
-[data-theme="dark"] .card-status-light   { background: var(--surface); }
+[data-theme="dark"] .card-light {
+  background: var(--surface);
+}
+[data-theme="dark"] .card-darker {
+  background: var(--surface-2);
+}
+[data-theme="dark"] .card-pink {
+  background: var(--surface-pink);
+}
+[data-theme="dark"] .card-projects-light {
+  background: var(--surface-warm);
+}
+[data-theme="dark"] .card-connect-light {
+  background: var(--surface-2);
+}
+[data-theme="dark"] .card-status-light {
+  background: var(--surface);
+}
 
 /* card-arrow */
 [data-theme="dark"] .card-arrow {
@@ -793,7 +805,7 @@
   color: #060c1f;
 }
 [data-theme="dark"] .hero-btn-primary:hover {
-  background: #FFE234;
+  background: #ffe234;
 }
 [data-theme="dark"] .hero-btn-secondary {
   background: transparent;
@@ -805,22 +817,30 @@
 }
 
 /* experience */
-[data-theme="dark"] .exp-years { color: var(--accent); }
+[data-theme="dark"] .exp-years {
+  color: var(--accent);
+}
 [data-theme="dark"] .exp-company-dot {
   background: var(--accent);
   box-shadow: 0 0 6px rgba(255, 226, 52, 0.5);
 }
 
 /* projects */
-[data-theme="dark"] .projects-count { color: var(--accent); }
-[data-theme="dark"] .proj-dot { background: rgba(255, 226, 52, 0.2); }
+[data-theme="dark"] .projects-count {
+  color: var(--accent);
+}
+[data-theme="dark"] .proj-dot {
+  background: rgba(255, 226, 52, 0.2);
+}
 [data-theme="dark"] .proj-dot.active {
   background: var(--accent);
   box-shadow: 0 0 6px rgba(255, 226, 52, 0.5);
 }
 
 /* connect */
-[data-theme="dark"] .connect-icon-wrap { color: var(--accent); }
+[data-theme="dark"] .connect-icon-wrap {
+  color: var(--accent);
+}
 
 /* freelance (pink card) */
 [data-theme="dark"] .freelance-tag {

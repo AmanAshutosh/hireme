@@ -877,8 +877,12 @@
 /* ═══════════════════════════════════════════
    DARK MODE OVERRIDES — pages.css
    ═══════════════════════════════════════════ */
-[data-theme="dark"] .inner-page  { background: var(--bg); }
-[data-theme="dark"] .inner-title { color: var(--text-primary); }
+[data-theme="dark"] .inner-page {
+  background: var(--bg);
+}
+[data-theme="dark"] .inner-title {
+  color: var(--text-primary);
+}
 
 /* back button */
 [data-theme="dark"] .back-btn {
@@ -901,19 +905,38 @@
   border-color: rgba(255, 226, 52, 0.2);
   box-shadow: 0 6px 28px rgba(255, 226, 52, 0.08);
 }
-[data-theme="dark"] .inner-card-light { background: var(--surface-2); }
-[data-theme="dark"] .inner-card-warm  { background: var(--surface-warm); }
+[data-theme="dark"] .inner-card-light {
+  background: var(--surface-2);
+}
+[data-theme="dark"] .inner-card-warm {
+  background: var(--surface-warm);
+}
 
 /* card-label */
-[data-theme="dark"] .card-label       { color: var(--text-dim); }
-[data-theme="dark"] .card-label-light { color: var(--text-dim); }
+[data-theme="dark"] .card-label {
+  color: var(--text-dim);
+}
+[data-theme="dark"] .card-label-light {
+  color: var(--text-dim);
+}
 
 /* experience timeline */
-[data-theme="dark"] .exp-dot { background: var(--accent); box-shadow: 0 0 6px rgba(255, 226, 52, 0.5); }
-[data-theme="dark"] .exp-dot-col::before { background: rgba(255, 226, 52, 0.15); }
-[data-theme="dark"] .exp-company-title { color: var(--text-primary); }
-[data-theme="dark"] .exp-role-text     { color: var(--accent); }
-[data-theme="dark"] .exp-bullet        { color: var(--accent); }
+[data-theme="dark"] .exp-dot {
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(255, 226, 52, 0.5);
+}
+[data-theme="dark"] .exp-dot-col::before {
+  background: rgba(255, 226, 52, 0.15);
+}
+[data-theme="dark"] .exp-company-title {
+  color: var(--text-primary);
+}
+[data-theme="dark"] .exp-role-text {
+  color: var(--accent);
+}
+[data-theme="dark"] .exp-bullet {
+  color: var(--accent);
+}
 
 /* education */
 [data-theme="dark"] .edu-card-item {
@@ -948,7 +971,9 @@
   background: rgba(255, 226, 52, 0.07);
   color: #c9b800;
 }
-[data-theme="dark"] .project-highlight-icon { color: var(--accent); }
+[data-theme="dark"] .project-highlight-icon {
+  color: var(--accent);
+}
 [data-theme="dark"] .project-link-primary {
   background: var(--accent);
   color: #060c1f;
@@ -982,7 +1007,9 @@
   background: var(--accent);
   color: #060c1f;
 }
-[data-theme="dark"] .form-submit:hover { background: #FFE234; }
+[data-theme="dark"] .form-submit:hover {
+  background: #ffe234;
+}
 
 /* contact info */
 [data-theme="dark"] .contact-info-item {
@@ -1008,7 +1035,9 @@
   background: var(--accent);
   color: #060c1f;
 }
-[data-theme="dark"] .freelance-cta-btn:hover { background: #FFE234; }
+[data-theme="dark"] .freelance-cta-btn:hover {
+  background: #ffe234;
+}
 [data-theme="dark"] .freelance-service-item {
   border-color: rgba(255, 226, 52, 0.1);
   background: rgba(255, 226, 52, 0.04);
@@ -1044,8 +1073,11 @@
   background: var(--surface);
   color: var(--text-primary);
   text-decoration: none;
-  transition: border-color var(--transition), box-shadow var(--transition),
-    background var(--transition), transform 0.15s ease;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background var(--transition),
+    transform 0.15s ease;
   cursor: pointer;
 }
 .ach-cert-card-link:not(.ach-cert-no-link):hover {
@@ -1053,7 +1085,10 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
-.ach-cert-no-link { cursor: default; opacity: 0.65; }
+.ach-cert-no-link {
+  cursor: default;
+  opacity: 0.65;
+}
 
 .ach-cert-icon-wrap {
   flex-shrink: 0;
@@ -1067,7 +1102,10 @@
   color: var(--accent);
   border: 1px solid var(--accent-border);
 }
-.ach-cert-body { flex: 1; min-width: 0; }
+.ach-cert-body {
+  flex: 1;
+  min-width: 0;
+}
 .ach-cert-name {
   font-size: 0.84rem;
   font-weight: 600;
