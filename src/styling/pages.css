@@ -43,7 +43,7 @@
     transform var(--transition);
 }
 .back-btn:hover {
-  background: #2a2a28;
+  background: var(--accent);
   transform: scale(1.05);
 }
 
@@ -316,7 +316,7 @@
   border: 1.5px solid var(--text-primary);
 }
 .project-link-primary:hover {
-  background: #2a2a28;
+  background: var(--accent);
 }
 .project-link-secondary {
   background: transparent;
@@ -415,7 +415,7 @@
     transform var(--transition);
 }
 .form-submit:hover {
-  background: #2a2a28;
+  background: var(--accent);
   transform: translateY(-1px);
 }
 
@@ -708,7 +708,7 @@
 .edu-status-progress {
   background: var(--accent-dim);
   border: 1px solid var(--accent-border);
-  color: #7a5c28;
+  color: var(--accent-text);
 }
 .edu-status-done {
   background: rgba(14, 13, 12, 0.05);
@@ -803,7 +803,7 @@
     transform var(--transition);
 }
 .freelance-cta-btn:hover {
-  background: #2a2a28;
+  background: var(--accent);
   transform: translateY(-1px);
 }
 
@@ -831,7 +831,7 @@
 .freelance-service-item:hover {
   border-color: var(--accent);
   background: var(--accent-dim);
-  color: #7a5c28;
+  color: var(--accent-text);
 }
 
 /* ─── MOBILE ─── */

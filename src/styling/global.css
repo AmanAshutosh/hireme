@@ -1,30 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap");
 
 :root {
-  /* ── Darker, richer warm palette ── */
-  --bg: #dbd4ca;
-  --surface: #e5dfd3;
-  --surface-2: #ccc6ba;
-  --surface-warm: #ede7db;
-  --surface-pink: #ecdbd6;
+  /* ── ColorHunt palette: #346739 #79ae6f #9fcb98 #f2edc2 ── */
+  --bg: #f2edc2;
+  --surface: #f7f3cc;
+  --surface-2: #e5e0ab;
+  --surface-warm: #faf6d2;
+  --surface-pink: #ecf2d4;
 
-  --text-primary: #15120e;
-  --text-secondary: #28231d;
-  --text-dim: #5e5952;
-  --text-dark: #15120e;
-  --text-dark-secondary: #28231d;
-  --text-light: #f4f3f0;
+  --text-primary: #1c2e1e;
+  --text-secondary: #2e4a31;
+  --text-dim: #5a8054;
+  --text-dark: #1c2e1e;
+  --text-dark-secondary: #2e4a31;
+  --text-light: #f2edc2;
 
-  /* Burnt orange — bolder, more vibrant than old gold */
-  --accent: #c4622a;
-  --accent-dim: rgba(196, 98, 42, 0.13);
-  --accent-border: rgba(196, 98, 42, 0.32);
-  --accent-text: #7a2e08;
+  /* Deep forest green as primary accent */
+  --accent: #346739;
+  --accent-dim: rgba(52, 103, 57, 0.13);
+  --accent-border: rgba(52, 103, 57, 0.32);
+  --accent-text: #1e3c22;
   --yellow: #e8c547;
   --green-ok: #22c55e;
 
-  --border: 1px solid rgba(21, 18, 14, 0.22);
-  --border-dim: 1px solid rgba(21, 18, 14, 0.1);
+  --border: 1px solid rgba(28, 46, 30, 0.22);
+  --border-dim: 1px solid rgba(28, 46, 30, 0.11);
   --border-light: 1px solid rgba(255, 255, 255, 0.08);
 
   --radius: 20px;
@@ -35,9 +35,9 @@
   --font-body: "DM Sans", sans-serif;
   --transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* ── NEUMORPHISM (stronger contrast on darker bg) ── */
-  --neumo-shadow-dark: #b8b2aa;
-  --neumo-shadow-light: #f4ede2;
+  /* ── NEUMORPHISM — tuned for cream background ── */
+  --neumo-shadow-dark: #cec9a4;
+  --neumo-shadow-light: #fefdf0;
   --neumo-shadow: 8px 8px 22px var(--neumo-shadow-dark), -8px -8px 22px var(--neumo-shadow-light);
   --neumo-shadow-hover: 14px 14px 38px var(--neumo-shadow-dark), -14px -14px 38px var(--neumo-shadow-light);
   --neumo-shadow-sm: 4px 4px 10px var(--neumo-shadow-dark), -4px -4px 10px var(--neumo-shadow-light);

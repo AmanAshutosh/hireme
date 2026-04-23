@@ -19,39 +19,39 @@
   transform-origin: center center;
 }
 
-/* Light mode blob colors */
+/* Light mode blob colors — ColorHunt #346739 #79ae6f #9fcb98 #f2edc2 */
 .blob-1 {
   width: 660px;
   height: 660px;
-  background: radial-gradient(circle, rgba(196, 98, 42, 0.22) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(52, 103, 57, 0.2) 0%, transparent 72%);
   top: -120px;
   left: -80px;
 }
 .blob-2 {
   width: 560px;
   height: 560px;
-  background: radial-gradient(circle, rgba(72, 163, 95, 0.13) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(121, 174, 111, 0.22) 0%, transparent 72%);
   top: 38%;
   right: -140px;
 }
 .blob-3 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(200, 100, 150, 0.15) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(159, 203, 152, 0.28) 0%, transparent 72%);
   bottom: -100px;
   left: 22%;
 }
 .blob-4 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(120, 90, 200, 0.11) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(52, 103, 57, 0.13) 0%, transparent 72%);
   top: 22%;
   left: 42%;
 }
 .blob-5 {
   width: 440px;
   height: 440px;
-  background: radial-gradient(circle, rgba(210, 160, 40, 0.13) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(121, 174, 111, 0.17) 0%, transparent 72%);
   top: -60px;
   right: 15%;
 }
@@ -168,7 +168,7 @@
   color: var(--text-primary);
 }
 .card-pink {
-  background: linear-gradient(135deg, var(--bg) 55%, rgba(200, 100, 150, 0.1) 100%);
+  background: linear-gradient(135deg, var(--bg) 50%, rgba(159, 203, 152, 0.22) 100%);
   color: var(--text-primary);
 }
 .card-projects-light {
@@ -279,7 +279,7 @@
   position: absolute;
   inset: -7px;
   border-radius: 50%;
-  border: 1.5px dashed rgba(21, 18, 14, 0.55);
+  border: 1.5px dashed rgba(52, 103, 57, 0.6);
   z-index: 1;
   animation: spin 14s linear infinite;
 }
@@ -676,9 +676,9 @@
   border-radius: 100px;
   font-size: 0.67rem;
   font-weight: 500;
-  background: rgba(200, 100, 150, 0.1);
-  border: 1px solid rgba(200, 100, 150, 0.25);
-  color: #8b2252;
+  background: rgba(159, 203, 152, 0.2);
+  border: 1px solid rgba(121, 174, 111, 0.35);
+  color: var(--accent-text);
   white-space: nowrap;
 }
 
