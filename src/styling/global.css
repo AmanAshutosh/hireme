@@ -1,27 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap");
 
 :root {
-  --bg: #f4f3ef;
-  --surface: #ffffff;
-  --surface-2: #eeede8;
-  --surface-warm: #faf8f3;
-  --surface-pink: #fdf0f5;
+  /* ── Darker, richer warm palette ── */
+  --bg: #dbd4ca;
+  --surface: #e5dfd3;
+  --surface-2: #ccc6ba;
+  --surface-warm: #ede7db;
+  --surface-pink: #ecdbd6;
 
-  --text-primary: #0e0d0c;
-  --text-secondary: #3e3c39;
-  --text-dim: #7c7a72;
-  --text-dark: #0e0d0c;
-  --text-dark-secondary: #3e3c39;
+  --text-primary: #15120e;
+  --text-secondary: #28231d;
+  --text-dim: #5e5952;
+  --text-dark: #15120e;
+  --text-dark-secondary: #28231d;
   --text-light: #f4f3f0;
 
-  --accent: #b8925a;
-  --accent-dim: rgba(184, 146, 90, 0.12);
-  --accent-border: rgba(184, 146, 90, 0.3);
+  /* Burnt orange — bolder, more vibrant than old gold */
+  --accent: #c4622a;
+  --accent-dim: rgba(196, 98, 42, 0.13);
+  --accent-border: rgba(196, 98, 42, 0.32);
+  --accent-text: #7a2e08;
   --yellow: #e8c547;
   --green-ok: #22c55e;
 
-  --border: 1px solid #0e0d0c;
-  --border-dim: 1px solid rgba(14, 13, 12, 0.1);
+  --border: 1px solid rgba(21, 18, 14, 0.22);
+  --border-dim: 1px solid rgba(21, 18, 14, 0.1);
   --border-light: 1px solid rgba(255, 255, 255, 0.08);
 
   --radius: 20px;
@@ -32,13 +35,13 @@
   --font-body: "DM Sans", sans-serif;
   --transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* ── NEUMORPHISM ── */
-  --neumo-shadow-dark: #c8c7c3;
-  --neumo-shadow-light: #ffffff;
-  --neumo-shadow: 6px 6px 18px var(--neumo-shadow-dark), -6px -6px 18px var(--neumo-shadow-light);
-  --neumo-shadow-hover: 12px 12px 32px var(--neumo-shadow-dark), -12px -12px 32px var(--neumo-shadow-light);
-  --neumo-shadow-sm: 3px 3px 8px var(--neumo-shadow-dark), -3px -3px 8px var(--neumo-shadow-light);
-  --neumo-shadow-inset: inset 4px 4px 12px var(--neumo-shadow-dark), inset -4px -4px 12px var(--neumo-shadow-light);
+  /* ── NEUMORPHISM (stronger contrast on darker bg) ── */
+  --neumo-shadow-dark: #b8b2aa;
+  --neumo-shadow-light: #f4ede2;
+  --neumo-shadow: 8px 8px 22px var(--neumo-shadow-dark), -8px -8px 22px var(--neumo-shadow-light);
+  --neumo-shadow-hover: 14px 14px 38px var(--neumo-shadow-dark), -14px -14px 38px var(--neumo-shadow-light);
+  --neumo-shadow-sm: 4px 4px 10px var(--neumo-shadow-dark), -4px -4px 10px var(--neumo-shadow-light);
+  --neumo-shadow-inset: inset 5px 5px 14px var(--neumo-shadow-dark), inset -5px -5px 14px var(--neumo-shadow-light);
 }
 
 *,
@@ -115,7 +118,7 @@ img {
 .tag-accent {
   border-color: var(--accent-border);
   background: var(--accent-dim);
-  color: #7a5c28;
+  color: var(--accent-text);
 }
 .tag-green {
   border-color: rgba(34, 197, 94, 0.28);
@@ -165,6 +168,7 @@ img {
   --accent: #ffe234;
   --accent-dim: rgba(255, 226, 52, 0.1);
   --accent-border: rgba(255, 226, 52, 0.3);
+  --accent-text: #c9a800;
   --yellow: #ffe066;
   --green-ok: #00ff88;
 
@@ -186,7 +190,7 @@ img {
 [data-theme="dark"] .tag-accent {
   border-color: rgba(255, 226, 52, 0.4);
   background: rgba(255, 226, 52, 0.12);
-  color: #c9b800;
+  color: var(--accent-text);
 }
 [data-theme="dark"] .tag-outline {
   border-color: rgba(255, 226, 52, 0.2);
