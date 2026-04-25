@@ -219,48 +219,48 @@
   grid-column: 4 / 10;
   grid-row: 1 / 3;
   min-height: 500px;
-  /* Light mode: dramatic dark forest green focal point */
-  background: linear-gradient(150deg, #2a5c30 0%, #346739 50%, #3d7a44 100%) !important;
-  box-shadow: 12px 12px 32px rgba(26, 58, 30, 0.35), -6px -6px 20px rgba(255, 255, 255, 0.55);
+  /* Light mode: terracotta warm focal point */
+  background: linear-gradient(150deg, #c85a3a 0%, #E07A5F 50%, #e8906f 100%) !important;
+  box-shadow: 12px 12px 32px rgba(160, 70, 40, 0.35), -6px -6px 20px rgba(255, 255, 255, 0.55);
 }
 
-/* Hero card text — cream on forest green */
-.card-hero .hero-name       { color: #f2edc2; }
-.card-hero .hero-role       { color: #9fcb98; }
-.card-hero .hero-tagline    { color: rgba(242, 237, 194, 0.82); }
-.card-hero .hero-location   { color: rgba(242, 237, 194, 0.62); }
-.card-hero .hero-avatar     { border-color: rgba(242, 237, 194, 0.55); }
+/* Hero card text — white on terracotta */
+.card-hero .hero-name       { color: #FFFFFF; }
+.card-hero .hero-role       { color: rgba(255, 240, 230, 0.85); }
+.card-hero .hero-tagline    { color: rgba(255, 240, 230, 0.78); }
+.card-hero .hero-location   { color: rgba(255, 240, 230, 0.60); }
+.card-hero .hero-avatar     { border-color: rgba(255, 240, 230, 0.55); }
 .card-hero .hero-avatar-ring {
-  border-color: rgba(159, 203, 152, 0.6);
+  border-color: rgba(255, 240, 230, 0.5);
   animation: spin 14s linear infinite;
 }
-.card-hero .hero-status-dot { border-color: #2a5c30; }
+.card-hero .hero-status-dot { border-color: #c85a3a; }
 .card-hero .hero-btn-primary {
-  background: #f2edc2;
-  border-color: #f2edc2;
-  color: #2a5c30;
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #9B2C0C;
 }
 .card-hero .hero-btn-primary:hover {
-  background: #ffffff;
-  border-color: #ffffff;
-  color: #1e4224;
+  background: #F5F0EB;
+  border-color: #F5F0EB;
+  color: #7a1f0a;
   transform: translateY(-1px);
 }
 .card-hero .hero-btn-secondary {
   background: transparent;
-  border-color: rgba(242, 237, 194, 0.35);
-  color: rgba(242, 237, 194, 0.88);
+  border-color: rgba(255, 240, 230, 0.35);
+  color: rgba(255, 240, 230, 0.88);
 }
 .card-hero .hero-btn-secondary:hover {
-  background: rgba(242, 237, 194, 0.1);
-  border-color: rgba(242, 237, 194, 0.55);
-  color: #f2edc2;
+  background: rgba(255, 240, 230, 0.1);
+  border-color: rgba(255, 240, 230, 0.55);
+  color: #FFFFFF;
 }
 .card-hero .hero-shimmer {
   background: linear-gradient(
     105deg,
     transparent 30%,
-    rgba(242, 237, 194, 0.18) 50%,
+    rgba(255, 255, 255, 0.18) 50%,
     transparent 70%
   );
 }
