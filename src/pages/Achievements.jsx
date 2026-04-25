@@ -21,8 +21,8 @@ const fadeUp = {
 
 const highlights = [
   {
-    label: "Founding Engineer",
-    desc: "Co-founded Quick Wage — India's salary-on-demand fintech platform",
+    label: "Core Engineering Member",
+    desc: "Quick Wage — India's salary-on-demand fintech platform",
     stat: "3.5+ yrs",
   },
   {

@@ -887,23 +887,23 @@
 /* back button */
 [data-theme="dark"] .back-btn {
   background: var(--surface);
-  border-color: rgba(255, 226, 52, 0.15);
+  border-color: rgba(0, 229, 255, 0.15);
   color: var(--text-secondary);
 }
 [data-theme="dark"] .back-btn:hover {
   color: var(--accent);
-  border-color: rgba(255, 226, 52, 0.35);
+  border-color: rgba(0, 229, 255, 0.35);
 }
 
 /* inner cards */
 [data-theme="dark"] .inner-card {
   background: var(--surface);
-  border-color: rgba(255, 226, 52, 0.1);
+  border-color: rgba(0, 229, 255, 0.1);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
 }
 [data-theme="dark"] .inner-card:hover {
-  border-color: rgba(255, 226, 52, 0.2);
-  box-shadow: 0 6px 28px rgba(255, 226, 52, 0.08);
+  border-color: rgba(0, 229, 255, 0.2);
+  box-shadow: 0 6px 28px rgba(0, 229, 255, 0.08);
 }
 [data-theme="dark"] .inner-card-light {
   background: var(--surface-2);
@@ -923,10 +923,10 @@
 /* experience timeline */
 [data-theme="dark"] .exp-dot {
   background: var(--accent);
-  box-shadow: 0 0 6px rgba(255, 226, 52, 0.5);
+  box-shadow: 0 0 6px rgba(0, 229, 255, 0.5);
 }
 [data-theme="dark"] .exp-dot-col::before {
-  background: rgba(255, 226, 52, 0.15);
+  background: rgba(0, 229, 255, 0.15);
 }
 [data-theme="dark"] .exp-company-title {
   color: var(--text-primary);
@@ -940,16 +940,16 @@
 
 /* education */
 [data-theme="dark"] .edu-card-item {
-  border-color: rgba(255, 226, 52, 0.1);
+  border-color: rgba(0, 229, 255, 0.1);
   background: var(--surface);
 }
 [data-theme="dark"] .edu-card-item:hover {
-  border-color: rgba(255, 226, 52, 0.25);
+  border-color: rgba(0, 229, 255, 0.25);
 }
 [data-theme="dark"] .edu-status-progress {
-  border-color: rgba(255, 226, 52, 0.3);
-  background: rgba(255, 226, 52, 0.1);
-  color: #c9b800;
+  border-color: rgba(0, 229, 255, 0.3);
+  background: rgba(0, 229, 255, 0.1);
+  color: #00BCD4;
 }
 [data-theme="dark"] .edu-status-done {
   border-color: rgba(0, 255, 136, 0.25);
@@ -960,30 +960,30 @@
 /* projects */
 [data-theme="dark"] .project-card {
   background: var(--surface);
-  border-color: rgba(255, 226, 52, 0.1);
+  border-color: rgba(0, 229, 255, 0.1);
 }
 [data-theme="dark"] .project-card:hover {
-  border-color: rgba(255, 226, 52, 0.25);
-  box-shadow: 0 8px 32px rgba(255, 226, 52, 0.08);
+  border-color: rgba(0, 229, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 229, 255, 0.08);
 }
 [data-theme="dark"] .project-type-badge {
-  border-color: rgba(255, 226, 52, 0.25);
-  background: rgba(255, 226, 52, 0.07);
-  color: #c9b800;
+  border-color: rgba(0, 229, 255, 0.25);
+  background: rgba(0, 229, 255, 0.07);
+  color: #00BCD4;
 }
 [data-theme="dark"] .project-highlight-icon {
   color: var(--accent);
 }
 [data-theme="dark"] .project-link-primary {
   background: var(--accent);
-  color: #060c1f;
+  color: #1A1F2C;
 }
 [data-theme="dark"] .project-link-secondary {
-  border-color: rgba(255, 226, 52, 0.25);
+  border-color: rgba(0, 229, 255, 0.25);
   color: var(--text-secondary);
 }
 [data-theme="dark"] .project-link-secondary:hover {
-  background: rgba(255, 226, 52, 0.08);
+  background: rgba(0, 229, 255, 0.08);
   color: var(--accent);
 }
 
@@ -991,13 +991,13 @@
 [data-theme="dark"] .form-input,
 [data-theme="dark"] .form-textarea {
   background: var(--surface-2);
-  border-color: rgba(255, 226, 52, 0.12);
+  border-color: rgba(0, 229, 255, 0.12);
   color: var(--text-primary);
 }
 [data-theme="dark"] .form-input:focus,
 [data-theme="dark"] .form-textarea:focus {
-  border-color: rgba(255, 226, 52, 0.4);
-  box-shadow: 0 0 0 3px rgba(255, 226, 52, 0.08);
+  border-color: rgba(0, 229, 255, 0.4);
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.08);
 }
 [data-theme="dark"] .form-input::placeholder,
 [data-theme="dark"] .form-textarea::placeholder {
@@ -1005,56 +1005,56 @@
 }
 [data-theme="dark"] .form-submit {
   background: var(--accent);
-  color: #060c1f;
+  color: #1A1F2C;
 }
 [data-theme="dark"] .form-submit:hover {
-  background: #ffe234;
+  background: #00E5FF;
 }
 
 /* contact info */
 [data-theme="dark"] .contact-info-item {
-  border-color: rgba(255, 226, 52, 0.1);
+  border-color: rgba(0, 229, 255, 0.1);
 }
 [data-theme="dark"] .contact-info-icon {
-  background: rgba(255, 226, 52, 0.08);
+  background: rgba(0, 229, 255, 0.08);
   color: var(--accent);
 }
 [data-theme="dark"] .contact-profile-item {
-  border-color: rgba(255, 226, 52, 0.12);
-  background: rgba(255, 226, 52, 0.04);
+  border-color: rgba(0, 229, 255, 0.12);
+  background: rgba(0, 229, 255, 0.04);
   color: var(--text-secondary);
 }
 [data-theme="dark"] .contact-profile-item:hover {
-  background: rgba(255, 226, 52, 0.1);
+  background: rgba(0, 229, 255, 0.1);
   color: var(--accent);
-  border-color: rgba(255, 226, 52, 0.3);
+  border-color: rgba(0, 229, 255, 0.3);
 }
 
 /* freelance */
 [data-theme="dark"] .freelance-cta-btn {
   background: var(--accent);
-  color: #060c1f;
+  color: #1A1F2C;
 }
 [data-theme="dark"] .freelance-cta-btn:hover {
-  background: #ffe234;
+  background: #00E5FF;
 }
 [data-theme="dark"] .freelance-service-item {
-  border-color: rgba(255, 226, 52, 0.1);
-  background: rgba(255, 226, 52, 0.04);
+  border-color: rgba(0, 229, 255, 0.1);
+  background: rgba(0, 229, 255, 0.04);
 }
 [data-theme="dark"] .freelance-service-item:hover {
-  border-color: rgba(255, 226, 52, 0.25);
-  background: rgba(255, 226, 52, 0.08);
+  border-color: rgba(0, 229, 255, 0.25);
+  background: rgba(0, 229, 255, 0.08);
 }
 
 /* social page */
 [data-theme="dark"] .social-page-card {
   background: var(--surface);
-  border-color: rgba(255, 226, 52, 0.1);
+  border-color: rgba(0, 229, 255, 0.1);
 }
 [data-theme="dark"] .social-page-card:hover {
-  border-color: rgba(255, 226, 52, 0.3);
-  box-shadow: 0 6px 28px rgba(255, 226, 52, 0.08);
+  border-color: rgba(0, 229, 255, 0.3);
+  box-shadow: 0 6px 28px rgba(0, 229, 255, 0.08);
 }
 
 /* ── CERT CARD STYLES (shared light + dark) ── */
@@ -1138,14 +1138,14 @@
 /* dark overrides for cert cards */
 [data-theme="dark"] .ach-cert-card-link {
   background: var(--surface);
-  border-color: rgba(255, 226, 52, 0.1);
+  border-color: rgba(0, 229, 255, 0.1);
 }
 [data-theme="dark"] .ach-cert-card-link:not(.ach-cert-no-link):hover {
-  border-color: rgba(255, 226, 52, 0.35);
-  box-shadow: 0 6px 28px rgba(255, 226, 52, 0.1);
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow: 0 6px 28px rgba(0, 229, 255, 0.1);
 }
 [data-theme="dark"] .ach-cert-icon-wrap {
-  background: rgba(255, 226, 52, 0.08);
-  border-color: rgba(255, 226, 52, 0.2);
+  background: rgba(0, 229, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.2);
   color: var(--accent);
 }

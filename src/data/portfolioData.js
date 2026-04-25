@@ -43,6 +43,9 @@ export const skills = {
     "Tailwind CSS",
     "Framer Motion",
     "Material UI",
+    "GSAP",
+    "Neumorphism",
+    "Glassmorphism",
   ],
   backend: [
     "Node.js",
@@ -61,7 +64,7 @@ export const skills = {
 export const experience = [
   {
     company: "Quick Wage",
-    role: "Full-Stack Developer · Founding Member",
+    role: "Full-Stack Developer · Core Engineering Member",
     period: "Aug 2022 – Feb 2026",
     duration: "3 years 7 months",
     location: "Noida",
@@ -149,22 +152,22 @@ export const certifications = [
   {
     name: "JavaScript (Intermediate) Certificate",
     issuer: "HackerRank",
-    link: "https://www.hackerrank.com/certificates/", // 🔗 paste your cert URL here
+    link: "https://drive.google.com/file/d/1FDI_WTCtJ-FxUBNz1j0XcksNbGwk0j3A/view?usp=sharing", // 🔗 paste your cert URL here
   },
   {
     name: "ReactJS Developer Bootcamp",
-    issuer: "Udemy",
-    link: "https://www.udemy.com/certificate/", // 🔗 paste your cert URL here
+    issuer: "Learn Code Online",
+    link: "https://drive.google.com/file/d/1IEuPmhXD_s4LujULKdwuDSV35x49DWBR/view?usp=sharing", // 🔗 paste your cert URL here
   },
   {
-    name: "React — Front-End Web Development",
-    issuer: "Coursera",
-    link: "https://www.coursera.org/verify/", // 🔗 paste your cert URL here
+    name: "React — Front-End Web Development Bootcamp",
+    issuer: "Learn Code Online",
+    link: "https://drive.google.com/file/d/1aTKakU5HMckWNcz3Jbcbuy9fz2JLrNqk/view?usp=sharing", // 🔗 paste your cert URL here
   },
   {
-    name: "Capriko Smart Solution Certified Java Developer",
-    issuer: "Capriko",
-    link: "#", // 🔗 paste your cert URL here
+    name: "Pesto Full Stack Development & Product Engineering",
+    issuer: "Pesto Tech",
+    link: "https://drive.google.com/file/d/12m8sH6xy0dSeyb33FyDCVEjJaYViRAT4/view?usp=sharing", // 🔗 paste your cert URL here
   },
 ];
 

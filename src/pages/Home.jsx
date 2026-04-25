@@ -277,8 +277,7 @@ export default function Home() {
                 <a
                   className="hero-btn hero-btn-primary"
                   href={personal.resume || "/resume.pdf"}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  download="Ashutosh_Aman_Resume.pdf"
                 >
                   <Download size={13} strokeWidth={2} />
                   Download Resume
