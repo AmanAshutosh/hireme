@@ -32,7 +32,7 @@ export default function WaterDots() {
       const isDark =
         document.documentElement.getAttribute("data-theme") === "dark";
       const dotColor = isDark ? "167,139,250" : "26,10,46";
-      const baseAlpha = isDark ? 0.09 : 0.065;
+      const baseAlpha = isDark ? 0.22 : 0.2;
 
       const cols = Math.ceil(w / SPACING) + 2;
       const rows = Math.ceil(h / SPACING) + 2;
@@ -53,8 +53,8 @@ export default function WaterDots() {
           const alpha = baseAlpha + (w1 + w2) * 0.013;
 
           ctx.beginPath();
-          ctx.arc(x, y, 1, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${dotColor},${Math.max(0.018, alpha)})`;
+          ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${dotColor},${Math.max(0.1, alpha)})`;
           ctx.fill();
         }
       }
