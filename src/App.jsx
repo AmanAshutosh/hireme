@@ -18,6 +18,7 @@ import Social from "./pages/Social";
 import TechStack from "./pages/TechStack";
 import "./styling/global.css";
 import ThemeToggle from "./components/ThemeToggle";
+import WaterDots from "./components/WaterDots";
 // ✅ Import LAST so mobile fixes override existing styles
 import "./styling/mobile-fixes.css";
 
@@ -54,7 +55,7 @@ export default function App() {
 
   return (
     <Router>
-      <div className="grain" />
+      <WaterDots />
       <ThemeToggle theme={theme} toggle={toggle} />
       <AnimatedRoutes />
     </Router>
