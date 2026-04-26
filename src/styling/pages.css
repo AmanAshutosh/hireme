@@ -73,7 +73,9 @@
   margin-bottom: 12px;
   background: var(--surface);
   box-shadow: var(--neumo-shadow);
-  transition: box-shadow var(--transition), transform var(--transition);
+  transition:
+    box-shadow var(--transition),
+    transform var(--transition);
 }
 .inner-card:last-child {
   margin-bottom: 0;
@@ -377,7 +379,9 @@
   background: var(--surface);
   color: var(--text-primary);
   box-shadow: var(--neumo-shadow-sm);
-  transition: box-shadow var(--transition), border-color var(--transition);
+  transition:
+    box-shadow var(--transition),
+    border-color var(--transition);
 }
 .form-input:focus {
   border-color: var(--accent);
@@ -400,7 +404,9 @@
   resize: vertical;
   min-height: 120px;
   box-shadow: var(--neumo-shadow-sm);
-  transition: box-shadow var(--transition), border-color var(--transition);
+  transition:
+    box-shadow var(--transition),
+    border-color var(--transition);
 }
 .form-textarea:focus {
   border-color: var(--accent);
@@ -647,7 +653,9 @@
   border-radius: var(--radius-sm);
   background: var(--surface);
   box-shadow: var(--neumo-shadow-sm);
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 .ach-cert-card:hover {
   transform: translate(-1px, -1px);
@@ -696,7 +704,9 @@
   border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--neumo-shadow);
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 .edu-card-item:hover {
   transform: translate(-2px, -2px);
@@ -742,7 +752,7 @@
 .edu-status-done {
   background: rgba(16, 185, 129, 0.08);
   border: 1.5px solid rgba(16, 185, 129, 0.3);
-  color: #065F46;
+  color: #065f46;
 }
 
 /* ═══════════════════════════════════════
@@ -929,7 +939,7 @@
 [data-theme="dark"] .back-btn:hover {
   background: var(--accent);
   border-color: var(--accent);
-  color: #0A0618;
+  color: #0a0618;
 }
 
 [data-theme="dark"] .inner-card {
@@ -979,7 +989,7 @@
 [data-theme="dark"] .edu-status-done {
   border-color: rgba(52, 211, 153, 0.35);
   background: rgba(52, 211, 153, 0.1);
-  color: #6EE7B7;
+  color: #6ee7b7;
 }
 
 /* projects */
@@ -998,11 +1008,11 @@
 [data-theme="dark"] .project-link-primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: #0A0618;
+  color: #0a0618;
 }
 [data-theme="dark"] .project-link-primary:hover {
-  background: #C4B5FD;
-  border-color: #C4B5FD;
+  background: #c4b5fd;
+  border-color: #c4b5fd;
 }
 [data-theme="dark"] .project-link-secondary {
   border-color: var(--accent-border);
@@ -1032,11 +1042,11 @@
 [data-theme="dark"] .form-submit {
   background: var(--accent);
   border-color: var(--accent);
-  color: #0A0618;
+  color: #0a0618;
 }
 [data-theme="dark"] .form-submit:hover {
-  background: #C4B5FD;
-  border-color: #C4B5FD;
+  background: #c4b5fd;
+  border-color: #c4b5fd;
 }
 
 /* contact info */
@@ -1064,11 +1074,11 @@
 [data-theme="dark"] .freelance-cta-btn {
   background: var(--accent);
   border-color: var(--accent);
-  color: #0A0618;
+  color: #0a0618;
 }
 [data-theme="dark"] .freelance-cta-btn:hover {
-  background: #C4B5FD;
-  border-color: #C4B5FD;
+  background: #c4b5fd;
+  border-color: #c4b5fd;
 }
 [data-theme="dark"] .freelance-service-item {
   border-color: var(--border-card);

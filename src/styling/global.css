@@ -2,31 +2,31 @@
 
 :root {
   /* ── Illustration UI — Bright & Vivid (Light Mode) ── */
-  --bg: #FAFAF7;
-  --surface: #FFFFFF;
-  --surface-2: #F2EEFF;
-  --surface-warm: #FFF8EE;
-  --surface-pink: #FFF0F6;
+  --bg: #fafaf7;
+  --surface: #ffffff;
+  --surface-2: #f2eeff;
+  --surface-warm: #fff8ee;
+  --surface-pink: #fff0f6;
 
-  --text-primary: #1A0A2E;
-  --text-secondary: #4A3270;
-  --text-dim: #8372A0;
-  --text-dark: #1A0A2E;
-  --text-dark-secondary: #4A3270;
-  --text-light: #FAFAF7;
+  --text-primary: #1a0a2e;
+  --text-secondary: #4a3270;
+  --text-dim: #8372a0;
+  --text-dark: #1a0a2e;
+  --text-dark-secondary: #4a3270;
+  --text-light: #fafaf7;
 
   /* Vivid violet accent */
-  --accent: #7C3AED;
+  --accent: #7c3aed;
   --accent-dim: rgba(124, 58, 237, 0.1);
   --accent-border: rgba(124, 58, 237, 0.38);
-  --accent-text: #4C1D95;
-  --yellow: #F59E0B;
-  --green-ok: #10B981;
+  --accent-text: #4c1d95;
+  --yellow: #f59e0b;
+  --green-ok: #10b981;
 
   --border: 1.5px solid rgba(26, 10, 46, 0.18);
   --border-dim: 1.5px solid rgba(26, 10, 46, 0.1);
   --border-light: 1.5px solid rgba(255, 255, 255, 0.2);
-  --border-card: 2px solid #1A0A2E;
+  --border-card: 2px solid #1a0a2e;
 
   --radius: 16px;
   --radius-sm: 12px;
@@ -37,9 +37,9 @@
   --transition: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ── ILLUSTRATION — Flat Offset Shadows ── */
-  --neumo-shadow: 4px 4px 0px #1A0A2E;
-  --neumo-shadow-hover: 6px 6px 0px #1A0A2E;
-  --neumo-shadow-sm: 2px 2px 0px #1A0A2E;
+  --neumo-shadow: 4px 4px 0px #1a0a2e;
+  --neumo-shadow-hover: 6px 6px 0px #1a0a2e;
+  --neumo-shadow-sm: 2px 2px 0px #1a0a2e;
   --neumo-shadow-inset: inset 2px 2px 8px rgba(26, 10, 46, 0.1);
 }
 
@@ -57,7 +57,11 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--bg);
-  background-image: radial-gradient(circle, rgba(26, 10, 46, 0.055) 1px, transparent 1px);
+  background-image: radial-gradient(
+    circle,
+    rgba(26, 10, 46, 0.055) 1px,
+    transparent 1px
+  );
   background-size: 28px 28px;
   color: var(--text-primary);
   line-height: 1.5;
@@ -65,7 +69,11 @@ body {
 }
 
 [data-theme="dark"] body {
-  background-image: radial-gradient(circle, rgba(167, 139, 250, 0.09) 1px, transparent 1px);
+  background-image: radial-gradient(
+    circle,
+    rgba(167, 139, 250, 0.09) 1px,
+    transparent 1px
+  );
 }
 
 h1,
@@ -127,7 +135,7 @@ img {
 .tag-green {
   border-color: rgba(16, 185, 129, 0.4);
   background: rgba(16, 185, 129, 0.1);
-  color: #065F46;
+  color: #065f46;
 }
 .tag-outline {
   border: 1.5px solid rgba(26, 10, 46, 0.2);
@@ -137,7 +145,7 @@ img {
 .tag-green-soft {
   border-color: rgba(16, 185, 129, 0.35);
   background: rgba(16, 185, 129, 0.08);
-  color: #065F46;
+  color: #065f46;
 }
 
 ::-webkit-scrollbar {
@@ -156,26 +164,26 @@ img {
 
 /* ── DARK THEME — Deep Purple Illustration ── */
 [data-theme="dark"] {
-  --bg: #0A0618;
-  --surface: #140C2A;
-  --surface-2: #1C1235;
-  --surface-warm: #160E28;
-  --surface-pink: #1A0C2C;
+  --bg: #0a0618;
+  --surface: #140c2a;
+  --surface-2: #1c1235;
+  --surface-warm: #160e28;
+  --surface-pink: #1a0c2c;
 
-  --text-primary: #F0EBFF;
-  --text-secondary: #C4B5FD;
-  --text-dim: #7C6AB5;
-  --text-dark: #F0EBFF;
-  --text-dark-secondary: #C4B5FD;
-  --text-light: #F0EBFF;
+  --text-primary: #f0ebff;
+  --text-secondary: #c4b5fd;
+  --text-dim: #7c6ab5;
+  --text-dark: #f0ebff;
+  --text-dark-secondary: #c4b5fd;
+  --text-light: #f0ebff;
 
   /* Bright lavender accent */
-  --accent: #A78BFA;
+  --accent: #a78bfa;
   --accent-dim: rgba(167, 139, 250, 0.13);
   --accent-border: rgba(167, 139, 250, 0.42);
-  --accent-text: #DDD6FE;
-  --yellow: #FCD34D;
-  --green-ok: #34D399;
+  --accent-text: #ddd6fe;
+  --yellow: #fcd34d;
+  --green-ok: #34d399;
 
   /* Illustration shadows — lavender tint */
   --neumo-shadow: 4px 4px 0px rgba(167, 139, 250, 0.55);
@@ -206,7 +214,7 @@ img {
 [data-theme="dark"] .tag-green-soft {
   border-color: rgba(52, 211, 153, 0.35);
   background: rgba(52, 211, 153, 0.1);
-  color: #6EE7B7;
+  color: #6ee7b7;
 }
 
 /* ── THEME TOGGLE BUTTON ── */
