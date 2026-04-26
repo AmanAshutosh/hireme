@@ -1,8 +1,5 @@
 /* ═══════════════════════════════════════
-   PAGES.CSS — Inner page styles
-   Fix #3  currently exploring = light warm
-   Fix #5  contact profiles = light card
-   Fix #8  arrow hover animation
+   PAGES.CSS — Inner page styles (Illustration UI)
 ═══════════════════════════════════════ */
 
 /* ── SHELL ── */
@@ -24,7 +21,7 @@
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--text-dim);
+  color: var(--text-primary);
 }
 
 /* ── BACK BUTTON ── */
@@ -33,18 +30,25 @@
   height: 36px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: var(--text-primary);
-  color: var(--bg);
+  background: var(--surface);
+  border: var(--border-card);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--neumo-shadow-sm);
   transition:
     background var(--transition),
+    color var(--transition),
+    box-shadow var(--transition),
     transform var(--transition);
 }
 .back-btn:hover {
   background: var(--accent);
-  transform: scale(1.05);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: var(--neumo-shadow);
+  transform: translate(-1px, -1px);
 }
 
 /* ── SHARED card-label on inner pages ── */
@@ -63,34 +67,37 @@
 
 /* ── INNER CARDS ── */
 .inner-card {
-  border: var(--border);
+  border: var(--border-card);
   border-radius: var(--radius);
   padding: 26px;
   margin-bottom: 12px;
   background: var(--surface);
+  box-shadow: var(--neumo-shadow);
+  transition: box-shadow var(--transition), transform var(--transition);
 }
 .inner-card:last-child {
   margin-bottom: 0;
 }
+.inner-card:hover {
+  box-shadow: var(--neumo-shadow-hover);
+  transform: translate(-1px, -1px);
+}
 
-/* Light warm off-white */
 .inner-card-light {
   background: var(--surface-2);
-  border-color: rgba(14, 13, 12, 0.1);
+  border-color: var(--border-card);
   color: var(--text-primary);
 }
 
-/* Fix #3 – "Currently exploring" warm surface, not dark/black */
 .inner-card-warm {
   background: var(--surface-warm);
-  border: 1px solid var(--accent-border);
+  border: var(--border-card);
   color: var(--text-primary);
 }
 
-/* inner-card-accent kept for any other uses but overridden if used on about */
 .inner-card-accent {
   background: var(--surface-2);
-  border: var(--border-dim);
+  border: var(--border-card);
   color: var(--text-primary);
 }
 
@@ -124,7 +131,8 @@
 }
 .exp-time-duration {
   font-size: 0.7rem;
-  color: rgba(14, 13, 12, 0.35);
+  color: var(--text-dim);
+  opacity: 0.6;
   margin-top: 3px;
 }
 
@@ -139,15 +147,16 @@
   height: 9px;
   border-radius: 50%;
   background: var(--text-primary);
+  border: 1.5px solid var(--text-primary);
   flex-shrink: 0;
   z-index: 1;
 }
 .exp-dot-col::after {
   content: "";
   display: block;
-  width: 1px;
+  width: 1.5px;
   flex: 1;
-  background: rgba(14, 13, 12, 0.12);
+  background: rgba(26, 10, 46, 0.15);
   margin-top: 6px;
 }
 .exp-item:last-child .exp-dot-col::after {
@@ -211,17 +220,18 @@
 .projects-bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 14px;
 }
 
 .project-card {
-  border: var(--border);
+  border: var(--border-card);
   border-radius: var(--radius);
   padding: 22px;
   background: var(--surface);
   display: flex;
   flex-direction: column;
   gap: 10px;
+  box-shadow: var(--neumo-shadow);
   transition:
     transform var(--transition),
     box-shadow var(--transition);
@@ -229,8 +239,8 @@
   overflow: hidden;
 }
 .project-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(14, 13, 12, 0.07);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--neumo-shadow-hover);
 }
 
 .project-card-header {
@@ -244,11 +254,11 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-dim);
-  background: var(--surface-2);
+  color: var(--accent-text);
+  background: var(--accent-dim);
   padding: 3px 10px;
   border-radius: 100px;
-  border: var(--border-dim);
+  border: 1.5px solid var(--accent-border);
 }
 
 .project-title {
@@ -312,23 +322,26 @@
 }
 .project-link-primary {
   background: var(--text-primary);
-  color: var(--bg);
-  border: 1.5px solid var(--text-primary);
+  color: var(--surface);
+  border: 2px solid var(--text-primary);
 }
 .project-link-primary:hover {
   background: var(--accent);
+  border-color: var(--accent);
 }
 .project-link-secondary {
   background: transparent;
   color: var(--text-primary);
-  border: 1.5px solid rgba(14, 13, 12, 0.22);
+  border: 2px solid rgba(26, 10, 46, 0.22);
 }
 .project-link-secondary:hover {
-  background: rgba(14, 13, 12, 0.05);
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
+  color: var(--accent);
 }
 
 /* ═══════════════════════════════════════
-   CONTACT PAGE  Fix #5 – profiles light
+   CONTACT PAGE
 ═══════════════════════════════════════ */
 .contact-grid {
   display: grid;
@@ -349,13 +362,13 @@
 }
 .form-label {
   font-size: 0.73rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-dim);
 }
 
 .form-input {
   width: 100%;
-  border: var(--border);
+  border: var(--border-card);
   padding: 9px 13px;
   border-radius: var(--radius-xs);
   font-size: 0.83rem;
@@ -363,10 +376,12 @@
   outline: none;
   background: var(--surface);
   color: var(--text-primary);
-  transition: box-shadow var(--transition);
+  box-shadow: var(--neumo-shadow-sm);
+  transition: box-shadow var(--transition), border-color var(--transition);
 }
 .form-input:focus {
-  box-shadow: 0 0 0 3px rgba(14, 13, 12, 0.07);
+  border-color: var(--accent);
+  box-shadow: 4px 4px 0px var(--accent);
 }
 .form-input::placeholder {
   color: var(--text-dim);
@@ -374,7 +389,7 @@
 
 .form-textarea {
   width: 100%;
-  border: var(--border);
+  border: var(--border-card);
   padding: 9px 13px;
   border-radius: var(--radius-xs);
   font-size: 0.83rem;
@@ -384,10 +399,12 @@
   color: var(--text-primary);
   resize: vertical;
   min-height: 120px;
-  transition: box-shadow var(--transition);
+  box-shadow: var(--neumo-shadow-sm);
+  transition: box-shadow var(--transition), border-color var(--transition);
 }
 .form-textarea:focus {
-  box-shadow: 0 0 0 3px rgba(14, 13, 12, 0.07);
+  border-color: var(--accent);
+  box-shadow: 4px 4px 0px var(--accent);
 }
 .form-textarea::placeholder {
   color: var(--text-dim);
@@ -400,23 +417,28 @@
   gap: 8px;
   padding: 10px 22px;
   background: var(--text-primary);
-  color: var(--bg);
-  border: none;
+  color: var(--surface);
+  border: 2px solid var(--text-primary);
   border-radius: 100px;
   font-size: 0.82rem;
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   letter-spacing: 0.01em;
   align-self: flex-start;
   margin-top: 4px;
+  box-shadow: var(--neumo-shadow-sm);
   transition:
     background var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
     transform var(--transition);
 }
 .form-submit:hover {
   background: var(--accent);
-  transform: translateY(-1px);
+  border-color: var(--accent);
+  box-shadow: var(--neumo-shadow);
+  transform: translate(-1px, -1px);
 }
 
 .contact-info-section {
@@ -432,11 +454,8 @@
   padding: 11px 13px;
   border-radius: var(--radius-xs);
   background: var(--surface);
-  border: var(--border-dim);
-}
-/* When inside inner-card-light, inherit the lighter bg */
-.inner-card-light .contact-info-item {
-  background: var(--surface);
+  border: var(--border-card);
+  box-shadow: var(--neumo-shadow-sm);
 }
 
 .contact-info-icon {
@@ -447,23 +466,23 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: rgba(14, 13, 12, 0.06);
-  color: var(--text-secondary);
+  background: var(--accent-dim);
+  border: 1.5px solid var(--accent-border);
+  color: var(--accent);
 }
 .contact-info-label {
   font-size: 0.67rem;
   color: var(--text-dim);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.02em;
   margin-bottom: 2px;
 }
 .contact-info-value {
   font-size: 0.83rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-primary);
 }
 
-/* Fix #5 – Profiles list uses light styles */
 .contact-profiles-list {
   display: flex;
   flex-direction: column;
@@ -477,21 +496,27 @@
   padding: 10px 13px;
   border-radius: var(--radius-xs);
   background: var(--surface);
-  border: var(--border-dim);
+  border: var(--border-card);
+  box-shadow: var(--neumo-shadow-sm);
   font-size: 0.82rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-primary);
   transition:
     background var(--transition),
-    border-color var(--transition);
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
 }
 .contact-profile-item:hover {
   background: var(--accent-dim);
   border-color: var(--accent-border);
+  box-shadow: var(--neumo-shadow);
+  transform: translate(-1px, -1px);
+  color: var(--accent);
 }
 
 /* ═══════════════════════════════════════
-   ABOUT PAGE  Fix #3
+   ABOUT PAGE
 ═══════════════════════════════════════ */
 .about-grid {
   display: grid;
@@ -514,8 +539,9 @@
   height: 78px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1.5px solid var(--text-primary);
+  border: 2.5px solid var(--text-primary);
   flex-shrink: 0;
+  box-shadow: var(--neumo-shadow-sm);
 }
 
 .about-name-block {
@@ -569,7 +595,6 @@
   gap: 5px;
 }
 
-/* Fix #3 – Currently exploring uses inner-card-warm (light) */
 .about-explore-title {
   font-family: var(--font-display);
   font-size: 1.15rem;
@@ -618,13 +643,15 @@
   align-items: center;
   gap: 14px;
   padding: 16px;
-  border: var(--border);
+  border: var(--border-card);
   border-radius: var(--radius-sm);
   background: var(--surface);
-  transition: transform var(--transition);
+  box-shadow: var(--neumo-shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 .ach-cert-card:hover {
-  transform: translateY(-2px);
+  transform: translate(-1px, -1px);
+  box-shadow: var(--neumo-shadow);
 }
 
 .ach-cert-icon {
@@ -632,7 +659,7 @@
   height: 40px;
   border-radius: 10px;
   background: var(--accent-dim);
-  border: 1px solid var(--accent-border);
+  border: 1.5px solid var(--accent-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -656,7 +683,7 @@
 .edu-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .edu-card-item {
@@ -665,13 +692,15 @@
   align-items: flex-start;
   gap: 16px;
   padding: 22px 24px;
-  border: var(--border);
+  border: var(--border-card);
   border-radius: var(--radius);
   background: var(--surface);
-  transition: transform var(--transition);
+  box-shadow: var(--neumo-shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 .edu-card-item:hover {
-  transform: translateX(3px);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--neumo-shadow-hover);
 }
 
 .edu-card-school {
@@ -700,20 +729,20 @@
 .edu-status-badge {
   display: inline-block;
   font-size: 0.65rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.05em;
   padding: 3px 10px;
   border-radius: 100px;
 }
 .edu-status-progress {
   background: var(--accent-dim);
-  border: 1px solid var(--accent-border);
+  border: 1.5px solid var(--accent-border);
   color: var(--accent-text);
 }
 .edu-status-done {
-  background: rgba(14, 13, 12, 0.05);
-  border: var(--border-dim);
-  color: var(--text-dim);
+  background: rgba(16, 185, 129, 0.08);
+  border: 1.5px solid rgba(16, 185, 129, 0.3);
+  color: #065F46;
 }
 
 /* ═══════════════════════════════════════
@@ -722,7 +751,7 @@
 .social-page-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
 .social-page-card {
@@ -730,17 +759,18 @@
   align-items: center;
   gap: 14px;
   padding: 18px 20px;
-  border: var(--border);
+  border: var(--border-card);
   border-radius: var(--radius-sm);
   background: var(--surface);
+  box-shadow: var(--neumo-shadow);
   cursor: pointer;
   transition:
     transform var(--transition),
     box-shadow var(--transition);
 }
 .social-page-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(14, 13, 12, 0.07);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--neumo-shadow-hover);
 }
 
 .social-page-icon-wrap {
@@ -754,7 +784,7 @@
 }
 .social-page-name {
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 2px;
 }
 .social-page-handle {
@@ -790,21 +820,26 @@
   margin-top: 6px;
   padding: 10px 22px;
   background: var(--text-primary);
-  color: var(--bg);
+  color: var(--surface);
   border-radius: 100px;
   font-size: 0.82rem;
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  border: none;
+  border: 2px solid var(--text-primary);
   align-self: flex-start;
+  box-shadow: var(--neumo-shadow-sm);
   transition:
     background var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
     transform var(--transition);
 }
 .freelance-cta-btn:hover {
   background: var(--accent);
-  transform: translateY(-1px);
+  border-color: var(--accent);
+  box-shadow: var(--neumo-shadow);
+  transform: translate(-1px, -1px);
 }
 
 .freelance-services-grid {
@@ -818,20 +853,25 @@
   align-items: center;
   gap: 8px;
   padding: 12px 14px;
-  border: var(--border-dim);
+  border: var(--border-card);
   border-radius: var(--radius-xs);
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-secondary);
-  background: var(--surface-2);
+  background: var(--surface);
+  box-shadow: var(--neumo-shadow-sm);
   transition:
     border-color var(--transition),
-    background var(--transition);
+    background var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
 }
 .freelance-service-item:hover {
   border-color: var(--accent);
   background: var(--accent-dim);
   color: var(--accent-text);
+  box-shadow: var(--neumo-shadow);
+  transform: translate(-1px, -1px);
 }
 
 /* ─── MOBILE ─── */
@@ -877,33 +917,24 @@
 /* ═══════════════════════════════════════════
    DARK MODE OVERRIDES — pages.css
    ═══════════════════════════════════════════ */
-[data-theme="dark"] .inner-page {
-  background: var(--bg);
-}
 [data-theme="dark"] .inner-title {
   color: var(--text-primary);
 }
 
-/* back button */
 [data-theme="dark"] .back-btn {
   background: var(--surface);
-  border-color: rgba(0, 229, 255, 0.15);
+  border-color: var(--border-card);
   color: var(--text-secondary);
 }
 [data-theme="dark"] .back-btn:hover {
-  color: var(--accent);
-  border-color: rgba(0, 229, 255, 0.35);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0A0618;
 }
 
-/* inner cards */
 [data-theme="dark"] .inner-card {
   background: var(--surface);
-  border-color: rgba(0, 229, 255, 0.1);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
-}
-[data-theme="dark"] .inner-card:hover {
-  border-color: rgba(0, 229, 255, 0.2);
-  box-shadow: 0 6px 28px rgba(0, 229, 255, 0.08);
+  border-color: var(--border-card);
 }
 [data-theme="dark"] .inner-card-light {
   background: var(--surface-2);
@@ -912,10 +943,7 @@
   background: var(--surface-warm);
 }
 
-/* card-label */
-[data-theme="dark"] .card-label {
-  color: var(--text-dim);
-}
+[data-theme="dark"] .card-label,
 [data-theme="dark"] .card-label-light {
   color: var(--text-dim);
 }
@@ -923,10 +951,10 @@
 /* experience timeline */
 [data-theme="dark"] .exp-dot {
   background: var(--accent);
-  box-shadow: 0 0 6px rgba(0, 229, 255, 0.5);
+  border-color: var(--accent);
 }
-[data-theme="dark"] .exp-dot-col::before {
-  background: rgba(0, 229, 255, 0.15);
+[data-theme="dark"] .exp-dot-col::after {
+  background: rgba(167, 139, 250, 0.2);
 }
 [data-theme="dark"] .exp-company-title {
   color: var(--text-primary);
@@ -940,50 +968,48 @@
 
 /* education */
 [data-theme="dark"] .edu-card-item {
-  border-color: rgba(0, 229, 255, 0.1);
+  border-color: var(--border-card);
   background: var(--surface);
 }
-[data-theme="dark"] .edu-card-item:hover {
-  border-color: rgba(0, 229, 255, 0.25);
-}
 [data-theme="dark"] .edu-status-progress {
-  border-color: rgba(0, 229, 255, 0.3);
-  background: rgba(0, 229, 255, 0.1);
-  color: #00BCD4;
+  border-color: var(--accent-border);
+  background: var(--accent-dim);
+  color: var(--accent-text);
 }
 [data-theme="dark"] .edu-status-done {
-  border-color: rgba(0, 255, 136, 0.25);
-  background: rgba(0, 255, 136, 0.08);
-  color: #00ff88;
+  border-color: rgba(52, 211, 153, 0.35);
+  background: rgba(52, 211, 153, 0.1);
+  color: #6EE7B7;
 }
 
 /* projects */
 [data-theme="dark"] .project-card {
   background: var(--surface);
-  border-color: rgba(0, 229, 255, 0.1);
-}
-[data-theme="dark"] .project-card:hover {
-  border-color: rgba(0, 229, 255, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 229, 255, 0.08);
+  border-color: var(--border-card);
 }
 [data-theme="dark"] .project-type-badge {
-  border-color: rgba(0, 229, 255, 0.25);
-  background: rgba(0, 229, 255, 0.07);
-  color: #00BCD4;
+  border-color: var(--accent-border);
+  background: var(--accent-dim);
+  color: var(--accent-text);
 }
 [data-theme="dark"] .project-highlight-icon {
   color: var(--accent);
 }
 [data-theme="dark"] .project-link-primary {
   background: var(--accent);
-  color: #1A1F2C;
+  border-color: var(--accent);
+  color: #0A0618;
+}
+[data-theme="dark"] .project-link-primary:hover {
+  background: #C4B5FD;
+  border-color: #C4B5FD;
 }
 [data-theme="dark"] .project-link-secondary {
-  border-color: rgba(0, 229, 255, 0.25);
+  border-color: var(--accent-border);
   color: var(--text-secondary);
 }
 [data-theme="dark"] .project-link-secondary:hover {
-  background: rgba(0, 229, 255, 0.08);
+  background: var(--accent-dim);
   color: var(--accent);
 }
 
@@ -991,13 +1017,13 @@
 [data-theme="dark"] .form-input,
 [data-theme="dark"] .form-textarea {
   background: var(--surface-2);
-  border-color: rgba(0, 229, 255, 0.12);
+  border-color: var(--border-card);
   color: var(--text-primary);
 }
 [data-theme="dark"] .form-input:focus,
 [data-theme="dark"] .form-textarea:focus {
-  border-color: rgba(0, 229, 255, 0.4);
-  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.08);
+  border-color: var(--accent);
+  box-shadow: 4px 4px 0px rgba(167, 139, 250, 0.5);
 }
 [data-theme="dark"] .form-input::placeholder,
 [data-theme="dark"] .form-textarea::placeholder {
@@ -1005,59 +1031,63 @@
 }
 [data-theme="dark"] .form-submit {
   background: var(--accent);
-  color: #1A1F2C;
+  border-color: var(--accent);
+  color: #0A0618;
 }
 [data-theme="dark"] .form-submit:hover {
-  background: #00E5FF;
+  background: #C4B5FD;
+  border-color: #C4B5FD;
 }
 
 /* contact info */
 [data-theme="dark"] .contact-info-item {
-  border-color: rgba(0, 229, 255, 0.1);
+  border-color: var(--border-card);
+  background: var(--surface);
 }
 [data-theme="dark"] .contact-info-icon {
-  background: rgba(0, 229, 255, 0.08);
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
   color: var(--accent);
 }
 [data-theme="dark"] .contact-profile-item {
-  border-color: rgba(0, 229, 255, 0.12);
-  background: rgba(0, 229, 255, 0.04);
+  border-color: var(--border-card);
+  background: var(--surface);
   color: var(--text-secondary);
 }
 [data-theme="dark"] .contact-profile-item:hover {
-  background: rgba(0, 229, 255, 0.1);
+  background: var(--accent-dim);
   color: var(--accent);
-  border-color: rgba(0, 229, 255, 0.3);
+  border-color: var(--accent-border);
 }
 
 /* freelance */
 [data-theme="dark"] .freelance-cta-btn {
   background: var(--accent);
-  color: #1A1F2C;
+  border-color: var(--accent);
+  color: #0A0618;
 }
 [data-theme="dark"] .freelance-cta-btn:hover {
-  background: #00E5FF;
+  background: #C4B5FD;
+  border-color: #C4B5FD;
 }
 [data-theme="dark"] .freelance-service-item {
-  border-color: rgba(0, 229, 255, 0.1);
-  background: rgba(0, 229, 255, 0.04);
+  border-color: var(--border-card);
+  background: var(--surface);
+  color: var(--text-secondary);
 }
 [data-theme="dark"] .freelance-service-item:hover {
-  border-color: rgba(0, 229, 255, 0.25);
-  background: rgba(0, 229, 255, 0.08);
+  border-color: var(--accent-border);
+  background: var(--accent-dim);
+  color: var(--accent-text);
 }
 
 /* social page */
 [data-theme="dark"] .social-page-card {
   background: var(--surface);
-  border-color: rgba(0, 229, 255, 0.1);
-}
-[data-theme="dark"] .social-page-card:hover {
-  border-color: rgba(0, 229, 255, 0.3);
-  box-shadow: 0 6px 28px rgba(0, 229, 255, 0.08);
+  border-color: var(--border-card);
 }
 
-/* ── CERT CARD STYLES (shared light + dark) ── */
+/* ── CERT CARD STYLES ── */
 .ach-cert-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -1069,10 +1099,11 @@
   gap: 14px;
   padding: 16px 18px;
   border-radius: var(--radius-sm);
-  border: var(--border);
+  border: var(--border-card);
   background: var(--surface);
   color: var(--text-primary);
   text-decoration: none;
+  box-shadow: var(--neumo-shadow-sm);
   transition:
     border-color var(--transition),
     box-shadow var(--transition),
@@ -1082,8 +1113,8 @@
 }
 .ach-cert-card-link:not(.ach-cert-no-link):hover {
   border-color: var(--accent-border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
+  box-shadow: var(--neumo-shadow);
+  transform: translate(-2px, -2px);
 }
 .ach-cert-no-link {
   cursor: default;
@@ -1100,7 +1131,7 @@
   justify-content: center;
   background: var(--accent-dim);
   color: var(--accent);
-  border: 1px solid var(--accent-border);
+  border: 1.5px solid var(--accent-border);
 }
 .ach-cert-body {
   flex: 1;
@@ -1138,14 +1169,13 @@
 /* dark overrides for cert cards */
 [data-theme="dark"] .ach-cert-card-link {
   background: var(--surface);
-  border-color: rgba(0, 229, 255, 0.1);
+  border-color: var(--border-card);
 }
 [data-theme="dark"] .ach-cert-card-link:not(.ach-cert-no-link):hover {
-  border-color: rgba(0, 229, 255, 0.35);
-  box-shadow: 0 6px 28px rgba(0, 229, 255, 0.1);
+  border-color: var(--accent-border);
 }
 [data-theme="dark"] .ach-cert-icon-wrap {
-  background: rgba(0, 229, 255, 0.08);
-  border-color: rgba(0, 229, 255, 0.2);
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
   color: var(--accent);
 }

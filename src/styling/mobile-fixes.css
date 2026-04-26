@@ -361,7 +361,10 @@ body > #root > * > div[style*="opacity"] {
     border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .bento-card:hover {
-  transform: translateY(-2px) translateZ(0);
+  transform: translate(-2px, -2px) translateZ(0);
+}
+.bento-card:active {
+  transform: translate(1px, 1px) translateZ(0);
 }
 
 .project-card {
@@ -370,7 +373,7 @@ body > #root > * > div[style*="opacity"] {
     box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .project-card:hover {
-  transform: translateY(-3px) translateZ(0);
+  transform: translate(-2px, -2px) translateZ(0);
 }
 
 .ach-cert-card-link {
@@ -380,7 +383,7 @@ body > #root > * > div[style*="opacity"] {
     box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .ach-cert-card-link:not(.ach-cert-no-link):hover {
-  transform: translateY(-2px) translateZ(0);
+  transform: translate(-2px, -2px) translateZ(0);
 }
 
 .ts-skill-chip {
@@ -391,16 +394,18 @@ body > #root > * > div[style*="opacity"] {
     transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .ts-skill-chip:hover {
-  transform: translateY(-1px) translateZ(0);
+  transform: translate(-1px, -1px) translateZ(0);
 }
 
 .back-btn {
   transition:
     background 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.18s cubic-bezier(0.4, 0, 0.2, 1),
     transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .back-btn:hover {
-  transform: scale(1.05) translateZ(0);
+  transform: translate(-1px, -1px) translateZ(0);
 }
 
 .theme-toggle {
@@ -412,7 +417,7 @@ body > #root > * > div[style*="opacity"] {
     transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .theme-toggle:hover {
-  transform: translateY(-2px) translateZ(0);
+  transform: translate(-1px, -1px) translateZ(0);
 }
 
 /* ─────────────────────────────────────────

@@ -18,7 +18,8 @@
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-  border: 2px solid var(--accent-border);
+  border: 2px solid var(--text-primary);
+  box-shadow: var(--neumo-shadow-sm);
 }
 .ts-bio-text {
   flex: 1;
@@ -147,21 +148,21 @@
 
 /* ── Dark mode overrides ── */
 [data-theme="dark"] .ts-bio-avatar {
-  border-color: rgba(255, 226, 52, 0.3);
-  box-shadow: 0 0 12px rgba(255, 226, 52, 0.1);
+  border-color: var(--accent-border);
+  box-shadow: 3px 3px 0px rgba(167, 139, 250, 0.4);
 }
 [data-theme="dark"] .ts-skill-chip {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 226, 52, 0.1);
+  background: rgba(167, 139, 250, 0.06);
+  border-color: rgba(167, 139, 250, 0.16);
   color: var(--text-secondary);
 }
 [data-theme="dark"] .ts-skill-chip:hover {
-  background: rgba(255, 226, 52, 0.08);
-  border-color: rgba(255, 226, 52, 0.3);
-  color: var(--text-primary);
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
+  color: var(--accent-text);
 }
 [data-theme="dark"] .ts-category-icon {
-  background: rgba(255, 226, 52, 0.08);
-  border-color: rgba(255, 226, 52, 0.2);
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
   color: var(--accent);
 }
