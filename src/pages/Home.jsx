@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import {
   MapPin,
   Mail,
@@ -39,6 +40,77 @@ const parseNum = (val) =>
   parseFloat(String(val).replace(/[^\d.]/g, "")) || 0;
 
 const expNum = parseNum(personal.yearsOfExperience);
+
+// ── Hero left content: fade-up + stagger ──
+const heroStagger = {
+  animate: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
+};
+const heroFadeUp = {
+  initial: { opacity: 0, y: 18 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+// ── Hanging profile card: float + mouse-tilt (lanyard swing is pure CSS) ──
+function HangingProfileCard() {
+  const cardRef = useRef(null);
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springRotateX = useSpring(rotateX, { stiffness: 160, damping: 16 });
+  const springRotateY = useSpring(rotateY, { stiffness: 160, damping: 16 });
+
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    rotateY.set(px * 16);
+    rotateX.set(-py * 16);
+  };
+
+  const handleMouseLeave = () => {
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
+  return (
+    <div className="hero-lanyard">
+      <div className="hero-strap" aria-hidden="true" />
+      <div className="hero-clip" aria-hidden="true" />
+      <motion.div
+        ref={cardRef}
+        className="hero-profile-card"
+        style={{ rotateX: springRotateX, rotateY: springRotateY }}
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut" }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="hero-card-hole" aria-hidden="true" />
+        <img
+          src={personal.avatar}
+          alt={personal.name}
+          className="hero-card-photo"
+        />
+        <div className="hero-card-name">{personal.name}</div>
+        <div className="hero-card-role">{personal.role}</div>
+        <div className="hero-card-divider" />
+        <div className="hero-card-row">
+          <MapPin size={12} strokeWidth={1.8} />
+          {personal.location}
+        </div>
+        <div className="hero-card-status">
+          <span className="hero-card-status-dot" />
+          Open to Opportunities
+        </div>
+      </motion.div>
+    </div>
+  );
+}
 
 export default function Home() {
   const navigate = useNavigate();
@@ -101,16 +173,6 @@ export default function Home() {
         ease: "power2.inOut",
       }
     );
-
-    // ── 5. Hero avatar float loop
-    gsap.to(".hero-avatar-wrap", {
-      y: -9,
-      duration: 3.4,
-      ease: "sine.inOut",
-      yoyo: true,
-      repeat: -1,
-      delay: 1.3,
-    });
 
     // ── 6. Number counter — experience
     const expEl = grid.querySelector(".exp-counter");
@@ -209,7 +271,6 @@ export default function Home() {
       blobKillList.forEach((t) => t?.kill());
       blobRefs.current.forEach((b) => b && gsap.killTweensOf(b));
       gsap.killTweensOf(".home-nav");
-      gsap.killTweensOf(".hero-avatar-wrap");
       gsap.killTweensOf(".hero-shimmer");
       gsap.killTweensOf(cards);
       magneticHandlers.forEach(({ card, onEnter, onMove, onLeave }) => {
@@ -258,42 +319,64 @@ export default function Home() {
           {/* ═══ HERO ═══ */}
           <div className="bento-card card-light card-hero">
             <div className="hero-shimmer" aria-hidden="true" />
-            <div className="hero-inner">
-              <div className="hero-avatar-wrap">
-                <img
-                  src={personal.avatar}
-                  alt={personal.name}
-                  className="hero-avatar"
-                />
-                <div className="hero-avatar-ring" />
-                <div className="hero-status-dot" />
+            <div className="hero-dotgrid" aria-hidden="true" />
+            <motion.div
+              className="hero-grid"
+              variants={heroStagger}
+              initial="initial"
+              animate="animate"
+            >
+              {/* ── Left: intro content ── */}
+              <div className="hero-left">
+                <motion.div className="hero-badge" variants={heroFadeUp}>
+                  <span className="hero-badge-dot" />
+                  Available for Work
+                </motion.div>
+
+                <motion.h1 className="hero-title-lg" variants={heroFadeUp}>
+                  Hello, I'm {personal.name.split(" ")[0]}{" "}
+                  <span className="hero-wave">👋</span>
+                </motion.h1>
+
+                <motion.div className="hero-subtitle-lg" variants={heroFadeUp}>
+                  {personal.role}
+                </motion.div>
+
+                <motion.p className="hero-desc-lg" variants={heroFadeUp}>
+                  {personal.bio} Working with React, Next.js, Node.js,
+                  TypeScript and cloud-native tools.
+                </motion.p>
+
+                <motion.div className="hero-cta-row" variants={heroFadeUp}>
+                  <motion.a
+                    whileHover={{ scale: 1.035, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="hero-cta hero-cta-primary"
+                    href={personal.resume || "/resume.pdf"}
+                    download="Ashutosh_Aman_Resume.pdf"
+                  >
+                    <Download size={14} strokeWidth={2} />
+                    Download Resume
+                  </motion.a>
+                  <motion.button
+                    whileHover={{ scale: 1.035, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="hero-cta hero-cta-secondary"
+                    onClick={() => navigate("/contact")}
+                  >
+                    <span className="hero-cta-dot" />
+                    Let's Connect
+                  </motion.button>
+                </motion.div>
               </div>
-              <div className="hero-text-block">
-                <div className="hero-name">{personal.name}</div>
-                <div className="hero-role">{personal.role}</div>
+
+              {/* ── Right: hanging profile card ── */}
+              <div className="hero-right">
+                <HangingProfileCard />
               </div>
-              <p className="hero-tagline">{personal.bio}</p>
-              <div className="hero-btns">
-                <a
-                  className="hero-btn hero-btn-primary"
-                  href={personal.resume || "/resume.pdf"}
-                  download="Ashutosh_Aman_Resume.pdf"
-                >
-                  <Download size={13} strokeWidth={2} />
-                  Download Resume
-                </a>
-                <button
-                  className="hero-btn hero-btn-secondary"
-                  onClick={() => navigate("/contact")}
-                >
-                  Let's Talk
-                </button>
-              </div>
-              <div className="hero-location">
-                <MapPin size={11} strokeWidth={1.8} />
-                {personal.location}
-              </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* ═══ ABOUT ═══ */}

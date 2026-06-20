@@ -44,23 +44,14 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .hero-avatar-ring {
+  .hero-lanyard,
+  .hero-wave,
+  .hero-badge-dot,
+  .hero-card-status-dot {
     animation: none !important;
   }
   .status-pulse {
     animation: none !important;
-  }
-}
-
-/* Optimise the ring spin — transform-origin prevents layout thrash */
-.hero-avatar-ring {
-  animation: spin 16s linear infinite;
-  transform-origin: center center;
-  will-change: transform;
-}
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
   }
 }
 
@@ -167,86 +158,77 @@ body > #root > * > div[style*="opacity"] {
 
 /* ─────────────────────────────────────────
    FIX 2 — HERO SECTION MOBILE SPACING
+   Tablet/mobile: text stacks above the
+   hanging profile card, both centered.
    ───────────────────────────────────────── */
 @media (max-width: 900px) {
   .card-hero {
     min-height: unset !important;
-    padding: 28px 20px;
   }
 
-  .hero-inner {
-    /* Switch from space-evenly to a controlled gap approach */
-    justify-content: flex-start;
-    gap: 20px;
-    padding: 4px 0;
-    height: auto;
+  .hero-grid {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 28px;
+    padding: 32px 24px;
   }
 
-  .hero-avatar-wrap {
-    width: 86px;
-    height: 86px;
-  }
-  .hero-avatar {
-    width: 86px;
-    height: 86px;
+  .hero-left {
+    align-items: center;
+    text-align: center;
   }
 
-  .hero-name {
-    font-size: 1.75rem;
-  }
-
-  .hero-role {
-    font-size: 0.8rem;
-    margin-top: 2px;
-  }
-
-  .hero-text-block {
-    gap: 4px;
-  }
-
-  .hero-tagline {
-    font-size: 0.82rem;
+  .hero-desc-lg {
     max-width: 100%;
-    line-height: 1.6;
   }
 
-  .hero-btns {
-    gap: 8px;
-    width: 100%;
+  .hero-cta-row {
     justify-content: center;
   }
 
-  .hero-btn {
-    padding: 10px 20px;
-    font-size: 0.78rem;
-    /* Make buttons full-width on small screens if they wrap */
-  }
-
-  .hero-location {
-    margin-top: 0;
-    font-size: 0.71rem;
+  .hero-right {
+    width: auto;
+    height: auto;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-inner {
-    gap: 18px;
+  .hero-grid {
+    padding: 28px 18px;
+    gap: 22px;
   }
 
-  .hero-btns {
+  .hero-title-lg {
+    font-size: 1.7rem;
+  }
+
+  .hero-subtitle-lg {
+    font-size: 1rem;
+  }
+
+  .hero-desc-lg {
+    font-size: 0.85rem;
+  }
+
+  .hero-cta-row {
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
   }
 
-  .hero-btn {
+  .hero-cta {
     justify-content: center;
     width: 100%;
     padding: 12px 20px;
-    font-size: 0.8rem;
   }
 
-  .hero-name {
-    font-size: 1.6rem;
+  .hero-right {
+    width: 100%;
+  }
+
+  .hero-profile-card {
+    width: 190px;
   }
 }
 
