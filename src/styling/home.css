@@ -504,29 +504,6 @@
   line-height: 1.08;
   color: var(--text-primary);
 }
-.hero-wave {
-  display: inline-block;
-  animation: heroWave 2.6s ease-in-out infinite;
-  transform-origin: 70% 70%;
-}
-@keyframes heroWave {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(16deg);
-  }
-  20% {
-    transform: rotate(-8deg);
-  }
-  30% {
-    transform: rotate(14deg);
-  }
-  40% {
-    transform: rotate(0deg);
-  }
-}
 
 .hero-subtitle-lg {
   font-size: clamp(1.05rem, 1.8vw, 1.3rem);
@@ -591,12 +568,12 @@
 }
 
 /* ══════════════════════════════════════
-   HANGING PROFILE CARD
+   HANGING PROFILE CARD — mobile-first base,
+   scaled up for tablet/desktop below.
 ══════════════════════════════════════ */
 .hero-right {
   flex-shrink: 0;
-  width: 230px;
-  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -604,7 +581,6 @@
 
 .hero-lanyard {
   position: relative;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -614,17 +590,17 @@
 @keyframes heroSwing {
   0%,
   100% {
-    transform: rotate(-2deg);
+    transform: rotate(-1deg);
   }
   50% {
-    transform: rotate(2deg);
+    transform: rotate(1deg);
   }
 }
 
 .hero-strap {
-  width: 26px;
-  height: 110px;
-  margin-top: -40px;
+  width: 18px;
+  height: 60px;
+  margin-top: -24px;
   background: linear-gradient(
     180deg,
     var(--accent) 0%,
@@ -635,9 +611,9 @@
 }
 
 .hero-clip {
-  width: 16px;
-  height: 16px;
-  margin-top: -4px;
+  width: 13px;
+  height: 13px;
+  margin-top: -3px;
   border-radius: 4px;
   background: var(--text-primary);
   border: 2px solid var(--surface);
@@ -646,10 +622,10 @@
 
 .hero-profile-card {
   position: relative;
-  margin-top: -6px;
-  width: 210px;
-  padding: 22px 18px 20px;
-  border-radius: 18px;
+  margin-top: -5px;
+  width: 168px;
+  padding: 16px 14px 14px;
+  border-radius: 16px;
   background: var(--surface);
   border: var(--border-card);
   box-shadow: var(--neumo-shadow);
@@ -662,33 +638,33 @@
 }
 
 .hero-card-hole {
-  width: 34px;
-  height: 7px;
+  width: 26px;
+  height: 6px;
   border-radius: 100px;
   background: var(--bg);
   border: var(--border-dim);
-  margin-bottom: 16px;
+  margin-bottom: 11px;
 }
 
 .hero-card-photo {
-  width: 76px;
-  height: 76px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
   border: 2.5px solid var(--text-primary);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .hero-card-name {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--text-primary);
 }
 
 .hero-card-role {
-  font-size: 0.74rem;
+  font-size: 0.68rem;
   color: var(--text-dim);
   margin-top: 2px;
 }
@@ -697,14 +673,14 @@
   width: 100%;
   height: 1px;
   background: var(--border-dim);
-  margin: 14px 0 12px;
+  margin: 10px 0 10px;
 }
 
 .hero-card-row {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.7rem;
+  font-size: 0.64rem;
   color: var(--text-secondary);
 }
 
@@ -712,24 +688,90 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 600;
   color: #065f46;
-  margin-top: 10px;
-  padding: 4px 10px;
+  margin-top: 8px;
+  padding: 4px 9px;
   border-radius: 100px;
   background: rgba(16, 185, 129, 0.08);
   border: 1.5px solid rgba(16, 185, 129, 0.3);
+  white-space: nowrap;
 }
 .hero-card-status-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--green-ok);
+  flex-shrink: 0;
   animation: pulse-opt 2.4s ease-in-out infinite;
 }
 [data-theme="dark"] .hero-card-status {
   color: var(--green-ok);
+}
+
+/* ── scale the hanging card up once there's room (tablet/desktop) ── */
+@media (min-width: 901px) {
+  .hero-right {
+    width: 230px;
+    height: 100%;
+  }
+  .hero-lanyard {
+    width: 100%;
+    animation-name: heroSwingWide;
+  }
+  @keyframes heroSwingWide {
+    0%,
+    100% {
+      transform: rotate(-2deg);
+    }
+    50% {
+      transform: rotate(2deg);
+    }
+  }
+  .hero-strap {
+    width: 26px;
+    height: 110px;
+    margin-top: -40px;
+  }
+  .hero-clip {
+    width: 16px;
+    height: 16px;
+    margin-top: -4px;
+  }
+  .hero-profile-card {
+    margin-top: -6px;
+    width: 210px;
+    padding: 22px 18px 20px;
+    border-radius: 18px;
+  }
+  .hero-card-hole {
+    width: 34px;
+    height: 7px;
+    margin-bottom: 16px;
+  }
+  .hero-card-photo {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 12px;
+  }
+  .hero-card-name {
+    font-size: 1rem;
+  }
+  .hero-card-role {
+    font-size: 0.74rem;
+  }
+  .hero-card-divider {
+    margin: 14px 0 12px;
+  }
+  .hero-card-row {
+    font-size: 0.7rem;
+  }
+  .hero-card-status {
+    font-size: 0.68rem;
+    margin-top: 10px;
+    padding: 4px 10px;
+  }
 }
 
 /* ══════════════════════════════════════

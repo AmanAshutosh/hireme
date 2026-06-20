@@ -45,7 +45,6 @@
     transition-duration: 0.01ms !important;
   }
   .hero-lanyard,
-  .hero-wave,
   .hero-badge-dot,
   .hero-card-status-dot {
     animation: none !important;
@@ -186,11 +185,6 @@ body > #root > * > div[style*="opacity"] {
   .hero-cta-row {
     justify-content: center;
   }
-
-  .hero-right {
-    width: auto;
-    height: auto;
-  }
 }
 
 @media (max-width: 480px) {
@@ -221,14 +215,6 @@ body > #root > * > div[style*="opacity"] {
     justify-content: center;
     width: 100%;
     padding: 12px 20px;
-  }
-
-  .hero-right {
-    width: 100%;
-  }
-
-  .hero-profile-card {
-    width: 190px;
   }
 }
 

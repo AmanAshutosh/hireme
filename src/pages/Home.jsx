@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { motion, useMotionValue, useSpring } from "framer-motion";
@@ -55,14 +55,27 @@ const heroFadeUp = {
 };
 
 // ── Hanging profile card: float + mouse-tilt (lanyard swing is pure CSS) ──
+// Tilt only runs on devices that actually have a mouse — on touch screens,
+// browsers emit a synthetic mousemove on tap with no matching mouseleave,
+// which used to snap the card to an extreme angle and leave it stuck there.
 function HangingProfileCard() {
   const cardRef = useRef(null);
+  const [canTilt, setCanTilt] = useState(false);
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
   const springRotateX = useSpring(rotateX, { stiffness: 160, damping: 16 });
   const springRotateY = useSpring(rotateY, { stiffness: 160, damping: 16 });
 
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => setCanTilt(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   const handleMouseMove = (e) => {
+    if (!canTilt) return;
     const card = cardRef.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
@@ -334,8 +347,7 @@ export default function Home() {
                 </motion.div>
 
                 <motion.h1 className="hero-title-lg" variants={heroFadeUp}>
-                  Hello, I'm {personal.name.split(" ")[0]}{" "}
-                  <span className="hero-wave">👋</span>
+                  Hello, I'm {personal.name.split(" ")[0]}
                 </motion.h1>
 
                 <motion.div className="hero-subtitle-lg" variants={heroFadeUp}>
