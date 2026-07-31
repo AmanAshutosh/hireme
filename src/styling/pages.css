@@ -219,6 +219,35 @@
 /* ═══════════════════════════════════════
    PROJECTS PAGE
 ═══════════════════════════════════════ */
+.projects-section {
+  margin-bottom: 32px;
+}
+.projects-section:last-child {
+  margin-bottom: 0;
+}
+.projects-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid rgba(26, 10, 46, 0.12);
+}
+.projects-section-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.projects-section-count {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
 .projects-bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -244,6 +273,42 @@
   transform: translate(-2px, -2px);
   box-shadow: var(--neumo-shadow-hover);
 }
+/* Thin per-project accent bar, driven by the `color` field in
+   portfolioData.js (--project-accent custom property). */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--project-accent, var(--accent));
+}
+
+/* Data Analytics placeholder cards — dashed border + reduced emphasis
+   so it's visually obvious these are upcoming, not shipped, work. */
+.project-card-placeholder {
+  border-style: dashed;
+  background: var(--surface-2);
+}
+
+.project-thumb-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  border-radius: var(--radius-xs);
+  border: 1.5px dashed rgba(26, 10, 46, 0.22);
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.05),
+    rgba(124, 58, 237, 0.05) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  color: var(--accent);
+  opacity: 0.75;
+}
 
 .project-card-header {
   display: flex;
@@ -261,6 +326,21 @@
   padding: 3px 10px;
   border-radius: 100px;
   border: 1.5px solid var(--accent-border);
+}
+
+.project-planned-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 3px 9px;
+  border-radius: 100px;
+  border: 1.5px dashed rgba(26, 10, 46, 0.3);
+  margin-left: auto;
 }
 
 .project-title {
@@ -340,6 +420,12 @@
   background: var(--accent-dim);
   border-color: var(--accent-border);
   color: var(--accent);
+}
+
+.project-link-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  pointer-events: none;
 }
 
 /* ═══════════════════════════════════════
@@ -594,6 +680,23 @@
   text-transform: uppercase;
   color: var(--text-dim);
   margin-bottom: 7px;
+}
+
+/* Status badge for in-progress skill categories, e.g. "Learning" on
+   Data Analytics — see skillCategoryStatus in portfolioData.js.
+   Shared by About.jsx and TechStack.jsx category headers. */
+.ts-category-status {
+  margin-left: auto;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  padding: 2px 8px;
+  border-radius: 100px;
+  flex-shrink: 0;
 }
 .skills-tags {
   display: flex;
@@ -996,6 +1099,26 @@
 [data-theme="dark"] .project-card {
   background: var(--surface);
   border-color: var(--border-card);
+}
+[data-theme="dark"] .projects-section-header {
+  border-bottom-color: rgba(167, 139, 250, 0.18);
+}
+[data-theme="dark"] .project-card-placeholder {
+  background: var(--surface-2);
+}
+[data-theme="dark"] .project-thumb-placeholder {
+  border-color: rgba(167, 139, 250, 0.28);
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(167, 139, 250, 0.08),
+    rgba(167, 139, 250, 0.08) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+[data-theme="dark"] .project-planned-badge {
+  border-color: rgba(167, 139, 250, 0.35);
+  color: var(--text-dim);
 }
 [data-theme="dark"] .project-type-badge {
   border-color: var(--accent-border);

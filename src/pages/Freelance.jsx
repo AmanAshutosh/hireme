@@ -68,7 +68,7 @@ export default function Freelance() {
               Services
             </span>
             <div className="freelance-services-grid">
-              {freelance.services.map((s, i) => (
+              {freelance.services.map((s) => (
                 <div key={s} className="freelance-service-item">
                   <Zap
                     size={13}

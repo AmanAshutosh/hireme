@@ -5,23 +5,29 @@ import {
   Monitor,
   Server,
   Cloud,
-  Database,
-  GitBranch,
+  ChartPie,
   Bot,
 } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import BackButton from "../components/BackButton";
-import { personal, skills, skillGroupLabels } from "../data/portfolioData";
+import {
+  personal,
+  skills,
+  skillGroupLabels,
+  skillCategoryStatus,
+} from "../data/portfolioData";
 import "../styling/pages.css";
 
 // 🔹 Ye object har skill group ke liye ek icon define karta hai
 // 🔹 Example: frontend → Monitor icon, backend → Server icon
+// 🔹 Keys MUST match the keys in `skills` (portfolioData.js) —
+//    these previously drifted (cloud/data/delivery vs devops),
+//    which silently dropped the devops group's icon.
 const skillGroupIcons = {
   frontend: <Monitor size={12} strokeWidth={1.8} />,
   backend: <Server size={12} strokeWidth={1.8} />,
-  cloud: <Cloud size={12} strokeWidth={1.8} />,
-  data: <Database size={12} strokeWidth={1.8} />,
-  delivery: <GitBranch size={12} strokeWidth={1.8} />,
+  devops: <Cloud size={12} strokeWidth={1.8} />,
+  dataAnalytics: <ChartPie size={12} strokeWidth={1.8} />,
   learning: <Bot size={12} strokeWidth={1.8} />,
 };
 
@@ -65,6 +71,8 @@ export default function About() {
                 src={personal.avatar}
                 alt={personal.name}
                 className="about-avatar"
+                loading="lazy"
+                decoding="async"
               />
 
               {/* 🔹 Name + role + location */}
@@ -91,6 +99,11 @@ export default function About() {
               </div>
             </div>
 
+            {/* TODO: Sync from LinkedIn — replace with the updated LinkedIn
+                summary. Should highlight Frontend Development experience,
+                Customer Support experience, the current transition into
+                Data Analytics, problem-solving mindset, continuous learning,
+                and the technologies worked with. Left unchanged for now. */}
             {/* 🔹 Bio / description */}
             <p className="about-bio">
               Full-Stack Developer with {personal.yearsOfExperience} years of
@@ -110,6 +123,11 @@ export default function About() {
                 <div className="skills-group-label">
                   {skillGroupIcons[group]}
                   {skillGroupLabels[group] || group}
+                  {skillCategoryStatus[group] && (
+                    <span className="ts-category-status">
+                      {skillCategoryStatus[group]}
+                    </span>
+                  )}
                 </div>
 
                 {/* 🔹 Har skill ko tag ke form me show kar rahe hain */}
@@ -124,6 +142,8 @@ export default function About() {
             ))}
           </motion.div>
 
+          {/* TODO: Sync from LinkedIn — confirm this still reflects the
+              latest "currently learning" focus once the profile is synced. */}
           {/* 🔹 Currently Exploring section (AI learning) */}
           <motion.div variants={fadeUp} className="inner-card inner-card-warm">
             <span className="card-label">Currently Exploring</span>

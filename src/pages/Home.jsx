@@ -24,6 +24,8 @@ import {
   socials,
   projects,
   freelance,
+  experience,
+  education,
 } from "../data/portfolioData";
 import "../styling/home.css";
 
@@ -40,6 +42,13 @@ const parseNum = (val) =>
   parseFloat(String(val).replace(/[^\d.]/g, "")) || 0;
 
 const expNum = parseNum(personal.yearsOfExperience);
+
+// Derived from portfolioData so the bento preview cards can't drift out of
+// sync with the full Experience/Education pages (was previously hardcoded).
+const latestExperience = experience[0];
+const highestDegree =
+  education.find((e) => e.degree.includes("B.Tech")) || education[0];
+const ongoingEducation = education.find((e) => e.status === "In Progress");
 
 // ── Hero left content: fade-up + stagger ──
 const heroStagger = {
@@ -108,6 +117,9 @@ function HangingProfileCard() {
           src={personal.avatar}
           alt={personal.name}
           className="hero-card-photo"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
         <div className="hero-card-name">{personal.name}</div>
         <div className="hero-card-role">{personal.role}</div>
@@ -129,6 +141,15 @@ export default function Home() {
   const navigate = useNavigate();
   const gridRef = useRef(null);
   const blobRefs = useRef([]);
+
+  // Bento cards are divs (not <a>/<button>) for layout/animation reasons,
+  // so keyboard access (Enter/Space) has to be wired up explicitly.
+  const navigateOnKey = (e, path) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      navigate(path);
+    }
+  };
 
   useEffect(() => {
     const grid = gridRef.current;
@@ -280,9 +301,12 @@ export default function Home() {
       });
     }
 
+    // Captured so the cleanup below tears down the same nodes it was set
+    // up with, even if blobRefs.current has since changed (e.g. unmount).
+    const blobEls = blobRefs.current;
     return () => {
       blobKillList.forEach((t) => t?.kill());
-      blobRefs.current.forEach((b) => b && gsap.killTweensOf(b));
+      blobEls.forEach((b) => b && gsap.killTweensOf(b));
       gsap.killTweensOf(".home-nav");
       gsap.killTweensOf(".hero-shimmer");
       gsap.killTweensOf(cards);
@@ -395,6 +419,10 @@ export default function Home() {
           <div
             className="bento-card card-light card-about"
             onClick={() => navigate("/about")}
+            onKeyDown={(e) => navigateOnKey(e, "/about")}
+            role="button"
+            tabIndex={0}
+            aria-label="View About page"
           >
             <span className="card-label">About Me</span>
             <div className="about-card-title">
@@ -413,6 +441,10 @@ export default function Home() {
           <div
             className="bento-card card-darker card-experience"
             onClick={() => navigate("/experience")}
+            onKeyDown={(e) => navigateOnKey(e, "/experience")}
+            role="button"
+            tabIndex={0}
+            aria-label="View Experience page"
           >
             <span className="card-label">Experience</span>
             <div className="exp-years">
@@ -423,7 +455,8 @@ export default function Home() {
             <div className="exp-company-row">
               <div className="exp-company-dot" />
               <span className="exp-company-name">
-                Quick Wage — Founding Engineer
+                {latestExperience.company} —{" "}
+                {latestExperience.role.split("·")[0].trim()}
               </span>
             </div>
             <div className="card-arrow">
@@ -435,6 +468,10 @@ export default function Home() {
           <div
             className="bento-card card-light card-tech"
             onClick={() => navigate("/techstack")}
+            onKeyDown={(e) => navigateOnKey(e, "/techstack")}
+            role="button"
+            tabIndex={0}
+            aria-label="View Tech Stack page"
           >
             <span className="card-label">Tech Stack</span>
             <div className="tech-grid">
@@ -461,6 +498,10 @@ export default function Home() {
           <div
             className="bento-card card-projects-light card-projects"
             onClick={() => navigate("/projects")}
+            onKeyDown={(e) => navigateOnKey(e, "/projects")}
+            role="button"
+            tabIndex={0}
+            aria-label="View Projects page"
           >
             <span className="card-label">Projects</span>
             <div className="projects-count">
@@ -485,13 +526,21 @@ export default function Home() {
           <div
             className="bento-card card-light card-education"
             onClick={() => navigate("/education")}
+            onKeyDown={(e) => navigateOnKey(e, "/education")}
+            role="button"
+            tabIndex={0}
+            aria-label="View Education page"
           >
             <span className="card-label">Education</span>
-            <div className="edu-degree">B.Tech CS</div>
-            <div className="edu-school">GL Bajaj Institute of Technology</div>
-            <div style={{ marginTop: 10 }}>
-              <span className="tag tag-accent">AI Bootcamp · Ongoing</span>
-            </div>
+            <div className="edu-degree">{highestDegree.degree}</div>
+            <div className="edu-school">{highestDegree.institution}</div>
+            {ongoingEducation && (
+              <div style={{ marginTop: 10 }}>
+                <span className="tag tag-accent">
+                  {ongoingEducation.institution.split("—")[0].trim()} · Ongoing
+                </span>
+              </div>
+            )}
             <div className="card-arrow">
               <ArrowUpRight size={13} />
             </div>
@@ -501,6 +550,10 @@ export default function Home() {
           <div
             className="bento-card card-connect-light card-connect"
             onClick={() => navigate("/contact")}
+            onKeyDown={(e) => navigateOnKey(e, "/contact")}
+            role="button"
+            tabIndex={0}
+            aria-label="View Contact page"
           >
             <div className="connect-icon-wrap">
               <Mail size={22} strokeWidth={1.2} />
@@ -518,6 +571,10 @@ export default function Home() {
           <div
             className="bento-card card-light card-achievements"
             onClick={() => navigate("/achievements")}
+            onKeyDown={(e) => navigateOnKey(e, "/achievements")}
+            role="button"
+            tabIndex={0}
+            aria-label="View Certifications page"
           >
             <span className="card-label">Certifications</span>
             <div className="cert-grid">
@@ -536,21 +593,25 @@ export default function Home() {
           <div
             className="bento-card card-light card-social"
             onClick={() => navigate("/social")}
+            onKeyDown={(e) => navigateOnKey(e, "/social")}
+            role="button"
+            tabIndex={0}
+            aria-label="View Online Profiles page"
           >
             <span className="card-label">Find Me Online</span>
             <div className="social-grid">
               {socials.map((s) => (
-                <div
+                <a
                   key={s.name}
                   className="social-item"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    window.open(s.url, "_blank");
-                  }}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
                 >
                   {socialIconMap[s.icon]}
                   <span>{s.name}</span>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -559,6 +620,10 @@ export default function Home() {
           <div
             className="bento-card card-pink card-freelance"
             onClick={() => navigate("/freelance")}
+            onKeyDown={(e) => navigateOnKey(e, "/freelance")}
+            role="button"
+            tabIndex={0}
+            aria-label="View Freelance page"
           >
             <div className="freelance-inner">
               <div>
@@ -585,6 +650,10 @@ export default function Home() {
           <div
             className="bento-card card-status-light card-status"
             onClick={() => navigate("/about")}
+            onKeyDown={(e) => navigateOnKey(e, "/about")}
+            role="button"
+            tabIndex={0}
+            aria-label="View About page"
           >
             <div className="status-badge">
               <span className="status-pulse" />

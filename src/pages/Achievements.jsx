@@ -19,6 +19,9 @@ const fadeUp = {
   }),
 };
 
+// TODO: Sync from LinkedIn — these highlight stats are derived from the
+// Quick Wage experience entry in portfolioData.js. Revisit once that entry
+// is updated from the latest LinkedIn profile.
 const highlights = [
   {
     label: "Core Engineering Member",

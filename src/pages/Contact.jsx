@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, GitFork, Globe, Send } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import BackButton from "../components/BackButton";
-import { personal } from "../data/portfolioData";
+import { personal, socials } from "../data/portfolioData";
 import "../styling/pages.css";
 
 const fadeUp = {
@@ -54,8 +54,12 @@ export default function Contact() {
             </span>
             <form className="contact-form-wrap" onSubmit={handleSubmit}>
               <div className="form-field">
-                <label className="form-label">Your Name</label>
+                <label className="form-label" htmlFor="contact-name">
+                  Your Name
+                </label>
                 <input
+                  id="contact-name"
+                  name="name"
                   className="form-input"
                   placeholder=""
                   value={form.name}
@@ -64,8 +68,12 @@ export default function Contact() {
                 />
               </div>
               <div className="form-field">
-                <label className="form-label">Email Address</label>
+                <label className="form-label" htmlFor="contact-email">
+                  Email Address
+                </label>
                 <input
+                  id="contact-email"
+                  name="email"
                   className="form-input"
                   type="email"
                   placeholder=""
@@ -75,8 +83,12 @@ export default function Contact() {
                 />
               </div>
               <div className="form-field">
-                <label className="form-label">Subject</label>
+                <label className="form-label" htmlFor="contact-subject">
+                  Subject
+                </label>
                 <input
+                  id="contact-subject"
+                  name="subject"
                   className="form-input"
                   placeholder="Project Collaboration"
                   value={form.subject}
@@ -86,8 +98,12 @@ export default function Contact() {
                 />
               </div>
               <div className="form-field">
-                <label className="form-label">Message</label>
+                <label className="form-label" htmlFor="contact-message">
+                  Message
+                </label>
                 <textarea
+                  id="contact-message"
+                  name="message"
                   className="form-textarea"
                   rows={5}
                   placeholder="Tell me about your project..."
@@ -174,12 +190,14 @@ export default function Contact() {
                 {[
                   {
                     label: "GitHub",
-                    url: "https://github.com/ashutoshhify",
+                    // Sourced from `socials` (portfolioData.js) instead of a
+                    // hardcoded URL — the two had drifted out of sync.
+                    url: socials.find((s) => s.icon === "github")?.url,
                     icon: <GitFork size={15} strokeWidth={1.8} />,
                   },
                   {
                     label: "LinkedIn",
-                    url: "https://linkedin.com/in/ashutoshhify",
+                    url: socials.find((s) => s.icon === "linkedin")?.url,
                     icon: <Globe size={15} strokeWidth={1.8} />,
                   },
                   {

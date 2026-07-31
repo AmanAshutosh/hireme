@@ -54,6 +54,9 @@ import {
   SiRedis,
   SiRabbitmq,
   SiElasticsearch,
+  // ── Data Analytics ──
+  SiPandas,
+  SiNumpy,
   // ── Delivery & Testing ──
   SiPrometheus,
   SiGrafana,
@@ -70,11 +73,22 @@ import {
   Globe,
   Cloud,
   Wind,
+  ChartLine,
+  ChartPie,
+  FileSpreadsheet,
+  Table2,
+  Database,
+  Sigma,
 } from "lucide-react";
 
 import PageTransition from "../components/PageTransition";
 import BackButton from "../components/BackButton";
-import { personal, skills, skillGroupLabels } from "../data/portfolioData";
+import {
+  personal,
+  skills,
+  skillGroupLabels,
+  skillCategoryStatus,
+} from "../data/portfolioData";
 import "../styling/pages.css";
 import "../styling/Techstack.css";
 
@@ -120,6 +134,16 @@ const ICON_MAP = {
   Kafka: <SiRabbitmq size={15} />,
   ElasticSearch: <SiElasticsearch size={15} />,
 
+  // Data Analytics
+  Pandas: <SiPandas size={15} />,
+  NumPy: <SiNumpy size={15} />,
+  Matplotlib: <ChartLine size={15} strokeWidth={1.8} />,
+  "Power BI": <ChartPie size={15} strokeWidth={1.8} />,
+  Excel: <FileSpreadsheet size={15} strokeWidth={1.8} />,
+  "Advanced Excel": <Table2 size={15} strokeWidth={1.8} />,
+  SQL: <Database size={15} strokeWidth={1.8} />,
+  Statistics: <Sigma size={15} strokeWidth={1.8} />,
+
   // Delivery & Testing
   "CI/CD Automation": <GitBranch size={15} strokeWidth={1.8} />,
   "Unit / E2E Testing": <FlaskConical size={15} strokeWidth={1.8} />,
@@ -134,13 +158,13 @@ const ICON_MAP = {
   "Escrow Logic": <SiEthereum size={15} />,
 };
 
-// ── Category icon map (matches keys in skillGroupLabels) ───
+// ── Category icon map — keys MUST match the keys in `skills`
+// (portfolioData.js), not skillGroupLabels' display strings. ───
 const CATEGORY_ICONS = {
   frontend: <SiReact size={14} />,
   backend: <SiNodedotjs size={14} />,
-  cloud: <Cloud size={14} strokeWidth={1.8} />,
-  data: <SiPostgresql size={14} />,
-  delivery: <GitBranch size={14} strokeWidth={1.8} />,
+  devops: <Cloud size={14} strokeWidth={1.8} />,
+  dataAnalytics: <ChartPie size={14} strokeWidth={1.8} />,
   learning: <Bot size={14} strokeWidth={1.8} />,
 };
 
@@ -182,6 +206,8 @@ export default function TechStack() {
               src={personal.avatar}
               alt={personal.name}
               className="ts-bio-avatar"
+              loading="lazy"
+              decoding="async"
             />
             <div className="ts-bio-text">
               <div className="ts-bio-name">{personal.name}</div>
@@ -223,6 +249,11 @@ export default function TechStack() {
                 <span className="ts-category-label">
                   {skillGroupLabels[groupKey] || groupKey}
                 </span>
+                {skillCategoryStatus[groupKey] && (
+                  <span className="ts-category-status">
+                    {skillCategoryStatus[groupKey]}
+                  </span>
+                )}
               </div>
 
               {/* Skill chips — each with brand icon + name */}

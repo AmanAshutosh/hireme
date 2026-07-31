@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import BackButton from "../components/BackButton";
-import { experience } from "../data/portfolioData";
+import { personal, experience } from "../data/portfolioData";
 import "../styling/pages.css";
 
 const fadeUp = {
@@ -34,7 +34,7 @@ export default function Experience() {
                 color: "var(--accent)",
               }}
             >
-              3+
+              {personal.yearsOfExperience.trim()}
             </div>
             <div>
               <div style={{ fontWeight: 600, fontSize: "0.9rem" }}>
@@ -43,7 +43,9 @@ export default function Experience() {
               <div
                 style={{ fontSize: "0.78rem", color: "var(--text-secondary)" }}
               >
-                2 companies · Full-Stack Engineering
+                {experience.length}{" "}
+                {experience.length === 1 ? "company" : "companies"} ·
+                Full-Stack Engineering
               </div>
             </div>
           </div>

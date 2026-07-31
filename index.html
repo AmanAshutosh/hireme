@@ -2,10 +2,71 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- Fixed: previously pointed at /vite.svg, which doesn't exist in
+         public/ — the browser tab showed no icon. -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Ashutosh Aman" />
+
     <title>Ashutosh Aman — Full-Stack Developer</title>
-    <meta name="description" content="Full-Stack Developer · React · Node.js · TypeScript · Open to Opportunities" />
+    <meta
+      name="description"
+      content="Ashutosh Aman is a Full-Stack Developer specializing in React, Node.js and TypeScript — building scalable web applications from rapid MVPs to production-grade fintech systems. Open to opportunities."
+    />
+    <!-- TODO: Sync from LinkedIn — keep title/description in step with
+         src/data/portfolioData.js `personal.role` / `personal.bio` once
+         the profile sync lands. -->
+    <link rel="canonical" href="https://hireme.vercel.app/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ashutosh Aman — Portfolio" />
+    <meta property="og:title" content="Ashutosh Aman — Full-Stack Developer" />
+    <meta
+      property="og:description"
+      content="Full-Stack Developer specializing in React, Node.js and TypeScript — building scalable web applications from rapid MVPs to production-grade fintech systems."
+    />
+    <meta property="og:url" content="https://hireme.vercel.app/" />
+    <meta property="og:image" content="https://hireme.vercel.app/avatar.jpg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Ashutosh Aman — Full-Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Full-Stack Developer specializing in React, Node.js and TypeScript — building scalable web applications from rapid MVPs to production-grade fintech systems."
+    />
+    <meta name="twitter:image" content="https://hireme.vercel.app/avatar.jpg" />
+    <meta name="twitter:site" content="@CodeKarm" />
+
+    <!-- Structured data — TODO: Sync from LinkedIn alongside personal/socials
+         in src/data/portfolioData.js -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ashutosh Aman",
+        "url": "https://hireme.vercel.app/",
+        "image": "https://hireme.vercel.app/avatar.jpg",
+        "jobTitle": "Full-Stack Developer",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Noida",
+          "addressRegion": "Uttar Pradesh",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://github.com/AmanAshutosh",
+          "https://www.linkedin.com/in/ashutoshhify/",
+          "https://x.com/CodeKarm",
+          "https://leetcode.com/u/CodeKarm/",
+          "https://www.geeksforgeeks.org/profile/codelessness",
+          "https://medium.com/@Codelessness"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
